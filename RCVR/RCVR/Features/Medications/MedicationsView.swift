@@ -24,7 +24,7 @@ struct MedicationsView: View {
     
     
     var body: some View {
-        List {
+        VStack {
             ForEach(medications) { item in
                 NavigationLink("\(item.title) \(item.timestamp, format: Date.FormatStyle(time: .standard))", destination: LogMedicationView(medication: item))
             }

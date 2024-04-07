@@ -34,4 +34,8 @@ struct RCVRApp: App {
         }
         .modelContainer(sharedModelContainer)
     }
+    
+    init() {
+        print(URL.applicationSupportDirectory.path(percentEncoded: false))
+    }
 }

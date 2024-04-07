@@ -23,14 +23,16 @@ struct WorkoutView: View {
     
     var body: some View {
         
-        List {
+        VStack {
             ForEach(exercises) { item in
                 NavigationLink("\(item.exercise.rawValue)", destination: LogWorkoutView(workout: item))
             }
             .onDelete(perform: deleteItems)
             
            
-        }.sheet(isPresented: $showSheet){
+        }
+        
+        .sheet(isPresented: $showSheet){
             workoutSheet()
         }
         Button(action : {

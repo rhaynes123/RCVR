@@ -27,8 +27,8 @@
 		55BCF4C32BC20FE300DE071C /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF4C22BC20FE300DE071C /* WorkoutView.swift */; };
 		55BCF4C52BC2101100DE071C /* LogWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF4C42BC2101100DE071C /* LogWorkoutView.swift */; };
 		55BCF4C72BC2104200DE071C /* WorkoutHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF4C62BC2104200DE071C /* WorkoutHistoryView.swift */; };
-		55BCF4C92BC211B800DE071C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF4C82BC211B800DE071C /* MainView.swift */; };
 		55CCFF332BC21A090093A6B3 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55CCFF322BC21A090093A6B3 /* Launch Screen.storyboard */; };
+		55CCFF352BC2F9890093A6B3 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CCFF342BC2F9890093A6B3 /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,8 +72,8 @@
 		55BCF4C22BC20FE300DE071C /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
 		55BCF4C42BC2101100DE071C /* LogWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWorkoutView.swift; sourceTree = "<group>"; };
 		55BCF4C62BC2104200DE071C /* WorkoutHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHistoryView.swift; sourceTree = "<group>"; };
-		55BCF4C82BC211B800DE071C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		55CCFF322BC21A090093A6B3 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		55CCFF342BC2F9890093A6B3 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +130,7 @@
 				55BCF4822BC1A07F00DE071C /* Assets.xcassets */,
 				55BCF4842BC1A07F00DE071C /* Preview Content */,
 				55CCFF322BC21A090093A6B3 /* Launch Screen.storyboard */,
+				55CCFF342BC2F9890093A6B3 /* MainView.swift */,
 			);
 			path = RCVR;
 			sourceTree = "<group>";
@@ -166,7 +167,6 @@
 				55BCF4AC2BC20B8A00DE071C /* Contemplations */,
 				55BCF4AB2BC20B7E00DE071C /* Workouts */,
 				55BCF4AE2BC20BF300DE071C /* Activity.swift */,
-				55BCF4C82BC211B800DE071C /* MainView.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -345,11 +345,11 @@
 				55BCF4B72BC20DCC00DE071C /* MedicationHistoryView.swift in Sources */,
 				55BCF4B12BC20C3B00DE071C /* Medication.swift in Sources */,
 				55BCF4B32BC20C7300DE071C /* MedicationsView.swift in Sources */,
-				55BCF4C92BC211B800DE071C /* MainView.swift in Sources */,
 				55BCF4C72BC2104200DE071C /* WorkoutHistoryView.swift in Sources */,
 				55BCF4C52BC2101100DE071C /* LogWorkoutView.swift in Sources */,
 				55BCF4AF2BC20BF300DE071C /* Activity.swift in Sources */,
 				55BCF4B52BC20CF300DE071C /* LogMedicationView.swift in Sources */,
+				55CCFF352BC2F9890093A6B3 /* MainView.swift in Sources */,
 				55BCF47D2BC1A07D00DE071C /* RCVRApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -525,7 +525,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -558,7 +558,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

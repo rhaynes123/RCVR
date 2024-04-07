@@ -23,7 +23,7 @@ struct ContemplationView: View {
     }
     
     var body: some View {
-        List {
+        VStack {
             ForEach(contemplations) { item in
                 NavigationLink("\(item.technique.rawValue) \(item.timestamp, format: Date.FormatStyle(time: .standard))", destination: LogContemplationView(contemplation: item))
             }

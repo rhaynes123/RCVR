@@ -48,4 +48,6 @@ enum Exercise: String, Codable, CaseIterable {
     case calfraises = "Calf Raises"
     case bicepCurl = "Bicep Curl"
     case pullups = "Pull Ups"
+    case wallPushUp = "Wall Push Ups"
+    case chinUps = "Chin Ups"
 }

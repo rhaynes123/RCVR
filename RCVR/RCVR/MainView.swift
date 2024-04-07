@@ -2,11 +2,9 @@
 //  MainView.swift
 //  RCVR
 //
-//  Created by richard Haynes on 4/6/24.
+//  Created by richard Haynes on 4/7/24.
 //
-
 import SwiftUI
-
 struct MainView: View {
     var body: some View {
         NavigationSplitView {
@@ -51,3 +49,4 @@ struct MainView: View {
     MainView()
 }
 
+    

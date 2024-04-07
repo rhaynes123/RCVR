@@ -6,11 +6,13 @@
 //
 import SwiftUI
 struct MainView: View {
+    
     var body: some View {
         NavigationSplitView {
             Form {
                 
                 Text("My Activities and Trends").font(.title)
+                
                 NavigationLink(destination: WorkoutHistoryView()){
                     Label("\(Category.exercise.rawValue) Trends", systemImage: "figure.run")
                 }
@@ -20,17 +22,16 @@ struct MainView: View {
                 NavigationLink(destination: ContemplationsHistoryView()){
                     Label("\(Category.contemplation.rawValue) Trends", systemImage: "figure.mind.and.body")
                 }
+                
                 ForEach(Category.allCases, id: \.rawValue) { cat in
                     Section {
-                        List {
-                            switch cat {
-                            case .exercise:
-                                WorkoutView()
-                            case .medication:
-                                MedicationsView()
-                            case .contemplation:
-                                ContemplationView()
-                            }
+                        switch cat {
+                        case .exercise:
+                            WorkoutView()
+                        case .medication:
+                            MedicationsView()
+                        case .contemplation:
+                            ContemplationView()
                         }
                     } header: {
                         Text(cat.rawValue)
@@ -40,6 +41,7 @@ struct MainView: View {
         } detail: {
             Text("Select an activity")
         }
+        
     }
 
    

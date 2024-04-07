@@ -25,10 +25,12 @@ struct MedicationsView: View {
     
     var body: some View {
         VStack {
-            ForEach(medications) { item in
-                NavigationLink("\(item.title) \(item.timestamp, format: Date.FormatStyle(time: .standard))", destination: LogMedicationView(medication: item))
+            List {
+                ForEach(medications) { item in
+                    NavigationLink("\(item.title) \(item.timestamp, format: Date.FormatStyle(time: .shortened))", destination: LogMedicationView(medication: item))
+                }
+                .onDelete(perform: deleteItems)
             }
-            .onDelete(perform: deleteItems)
         }.sheet(isPresented: $showSheet) {
             medicationSheet()
         }

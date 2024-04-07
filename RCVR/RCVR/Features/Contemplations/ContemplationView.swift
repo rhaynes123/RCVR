@@ -24,10 +24,12 @@ struct ContemplationView: View {
     
     var body: some View {
         VStack {
-            ForEach(contemplations) { item in
-                NavigationLink("\(item.technique.rawValue) \(item.timestamp, format: Date.FormatStyle(time: .standard))", destination: LogContemplationView(contemplation: item))
+            List {
+                ForEach(contemplations) { item in
+                    NavigationLink("\(item.technique.rawValue) \(item.timestamp, format: Date.FormatStyle(time: .standard))", destination: LogContemplationView(contemplation: item))
+                }
+                .onDelete(perform: deleteItems)
             }
-            .onDelete(perform: deleteItems)
            
         }.sheet(isPresented: $showSheet) {
             contemplationSheet()

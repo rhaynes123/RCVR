@@ -37,4 +37,5 @@ enum Technique: String, CaseIterable, Codable {
     case meditation = "Meditation"
     case deepBreath = "Deep Breathing"
     case mindfulness = "Mindfulness"
+    case prayer = "Prayer"
 }

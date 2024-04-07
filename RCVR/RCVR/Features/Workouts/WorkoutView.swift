@@ -24,12 +24,12 @@ struct WorkoutView: View {
     var body: some View {
         
         VStack {
-            ForEach(exercises) { item in
-                NavigationLink("\(item.exercise.rawValue)", destination: LogWorkoutView(workout: item))
+            List {
+                ForEach(exercises) { item in
+                    NavigationLink("\(item.exercise.rawValue)", destination: LogWorkoutView(workout: item))
+                }
+                .onDelete(perform: deleteItems)
             }
-            .onDelete(perform: deleteItems)
-            
-           
         }
         
         .sheet(isPresented: $showSheet){
@@ -87,6 +87,9 @@ struct workoutSheet: View {
 
 
 #Preview {
-    WorkoutView().modelContainer(for: Workout.self, inMemory: true)
+    let container = try! ModelContainer(for: Workout.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
+    container.mainContext.insert(Workout(timestamp: Date(), exercise: .chinUps, category: .exercise))
+    container.mainContext.insert(Workout(timestamp: Date(), exercise: .crunches, category: .exercise))
+    return WorkoutView().modelContainer(container)
 }
 

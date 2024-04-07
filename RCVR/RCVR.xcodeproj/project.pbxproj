@@ -8,14 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		55BCF47D2BC1A07D00DE071C /* RCVRApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF47C2BC1A07D00DE071C /* RCVRApp.swift */; };
-		55BCF47F2BC1A07D00DE071C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF47E2BC1A07D00DE071C /* ContentView.swift */; };
-		55BCF4812BC1A07D00DE071C /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF4802BC1A07D00DE071C /* Item.swift */; };
 		55BCF4832BC1A07F00DE071C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55BCF4822BC1A07F00DE071C /* Assets.xcassets */; };
 		55BCF4862BC1A07F00DE071C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55BCF4852BC1A07F00DE071C /* Preview Assets.xcassets */; };
 		55BCF4902BC1A07F00DE071C /* RCVRTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF48F2BC1A07F00DE071C /* RCVRTests.swift */; };
 		55BCF49A2BC1A07F00DE071C /* RCVRUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF4992BC1A07F00DE071C /* RCVRUITests.swift */; };
 		55BCF49C2BC1A07F00DE071C /* RCVRUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF49B2BC1A07F00DE071C /* RCVRUITestsLaunchTests.swift */; };
 		55BCF4A92BC1A0ED00DE071C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 55BCF4A82BC1A0ED00DE071C /* README.md */; };
+		55BCF4AF2BC20BF300DE071C /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF4AE2BC20BF300DE071C /* Activity.swift */; };
+		55BCF4B12BC20C3B00DE071C /* Medication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF4B02BC20C3B00DE071C /* Medication.swift */; };
+		55BCF4B32BC20C7300DE071C /* MedicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF4B22BC20C7300DE071C /* MedicationsView.swift */; };
+		55BCF4B52BC20CF300DE071C /* LogMedicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF4B42BC20CF300DE071C /* LogMedicationView.swift */; };
+		55BCF4B72BC20DCC00DE071C /* MedicationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF4B62BC20DCC00DE071C /* MedicationHistoryView.swift */; };
+		55BCF4B92BC20E1800DE071C /* Contemplation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF4B82BC20E1800DE071C /* Contemplation.swift */; };
+		55BCF4BB2BC20E3C00DE071C /* ContemplationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF4BA2BC20E3C00DE071C /* ContemplationView.swift */; };
+		55BCF4BD2BC20EA600DE071C /* LogContemplationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF4BC2BC20EA600DE071C /* LogContemplationView.swift */; };
+		55BCF4BF2BC20EDB00DE071C /* ContemplationsHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF4BE2BC20EDB00DE071C /* ContemplationsHistoryView.swift */; };
+		55BCF4C12BC20F4400DE071C /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF4C02BC20F4400DE071C /* Workout.swift */; };
+		55BCF4C32BC20FE300DE071C /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF4C22BC20FE300DE071C /* WorkoutView.swift */; };
+		55BCF4C52BC2101100DE071C /* LogWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF4C42BC2101100DE071C /* LogWorkoutView.swift */; };
+		55BCF4C72BC2104200DE071C /* WorkoutHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF4C62BC2104200DE071C /* WorkoutHistoryView.swift */; };
+		55BCF4C92BC211B800DE071C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF4C82BC211B800DE071C /* MainView.swift */; };
+		55CCFF332BC21A090093A6B3 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55CCFF322BC21A090093A6B3 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +51,6 @@
 /* Begin PBXFileReference section */
 		55BCF4792BC1A07D00DE071C /* RCVR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RCVR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55BCF47C2BC1A07D00DE071C /* RCVRApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCVRApp.swift; sourceTree = "<group>"; };
-		55BCF47E2BC1A07D00DE071C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		55BCF4802BC1A07D00DE071C /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		55BCF4822BC1A07F00DE071C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55BCF4852BC1A07F00DE071C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		55BCF48B2BC1A07F00DE071C /* RCVRTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RCVRTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +59,21 @@
 		55BCF4992BC1A07F00DE071C /* RCVRUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCVRUITests.swift; sourceTree = "<group>"; };
 		55BCF49B2BC1A07F00DE071C /* RCVRUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCVRUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		55BCF4A82BC1A0ED00DE071C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		55BCF4AE2BC20BF300DE071C /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		55BCF4B02BC20C3B00DE071C /* Medication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medication.swift; sourceTree = "<group>"; };
+		55BCF4B22BC20C7300DE071C /* MedicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationsView.swift; sourceTree = "<group>"; };
+		55BCF4B42BC20CF300DE071C /* LogMedicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogMedicationView.swift; sourceTree = "<group>"; };
+		55BCF4B62BC20DCC00DE071C /* MedicationHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationHistoryView.swift; sourceTree = "<group>"; };
+		55BCF4B82BC20E1800DE071C /* Contemplation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contemplation.swift; sourceTree = "<group>"; };
+		55BCF4BA2BC20E3C00DE071C /* ContemplationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContemplationView.swift; sourceTree = "<group>"; };
+		55BCF4BC2BC20EA600DE071C /* LogContemplationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogContemplationView.swift; sourceTree = "<group>"; };
+		55BCF4BE2BC20EDB00DE071C /* ContemplationsHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContemplationsHistoryView.swift; sourceTree = "<group>"; };
+		55BCF4C02BC20F4400DE071C /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
+		55BCF4C22BC20FE300DE071C /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
+		55BCF4C42BC2101100DE071C /* LogWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWorkoutView.swift; sourceTree = "<group>"; };
+		55BCF4C62BC2104200DE071C /* WorkoutHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHistoryView.swift; sourceTree = "<group>"; };
+		55BCF4C82BC211B800DE071C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		55CCFF322BC21A090093A6B3 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,11 +125,11 @@
 		55BCF47B2BC1A07D00DE071C /* RCVR */ = {
 			isa = PBXGroup;
 			children = (
+				55BCF4AA2BC20B6A00DE071C /* Features */,
 				55BCF47C2BC1A07D00DE071C /* RCVRApp.swift */,
-				55BCF47E2BC1A07D00DE071C /* ContentView.swift */,
-				55BCF4802BC1A07D00DE071C /* Item.swift */,
 				55BCF4822BC1A07F00DE071C /* Assets.xcassets */,
 				55BCF4842BC1A07F00DE071C /* Preview Content */,
+				55CCFF322BC21A090093A6B3 /* Launch Screen.storyboard */,
 			);
 			path = RCVR;
 			sourceTree = "<group>";
@@ -131,6 +157,51 @@
 				55BCF49B2BC1A07F00DE071C /* RCVRUITestsLaunchTests.swift */,
 			);
 			path = RCVRUITests;
+			sourceTree = "<group>";
+		};
+		55BCF4AA2BC20B6A00DE071C /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				55BCF4AD2BC20B9500DE071C /* Medications */,
+				55BCF4AC2BC20B8A00DE071C /* Contemplations */,
+				55BCF4AB2BC20B7E00DE071C /* Workouts */,
+				55BCF4AE2BC20BF300DE071C /* Activity.swift */,
+				55BCF4C82BC211B800DE071C /* MainView.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		55BCF4AB2BC20B7E00DE071C /* Workouts */ = {
+			isa = PBXGroup;
+			children = (
+				55BCF4C02BC20F4400DE071C /* Workout.swift */,
+				55BCF4C22BC20FE300DE071C /* WorkoutView.swift */,
+				55BCF4C42BC2101100DE071C /* LogWorkoutView.swift */,
+				55BCF4C62BC2104200DE071C /* WorkoutHistoryView.swift */,
+			);
+			path = Workouts;
+			sourceTree = "<group>";
+		};
+		55BCF4AC2BC20B8A00DE071C /* Contemplations */ = {
+			isa = PBXGroup;
+			children = (
+				55BCF4B82BC20E1800DE071C /* Contemplation.swift */,
+				55BCF4BA2BC20E3C00DE071C /* ContemplationView.swift */,
+				55BCF4BC2BC20EA600DE071C /* LogContemplationView.swift */,
+				55BCF4BE2BC20EDB00DE071C /* ContemplationsHistoryView.swift */,
+			);
+			path = Contemplations;
+			sourceTree = "<group>";
+		};
+		55BCF4AD2BC20B9500DE071C /* Medications */ = {
+			isa = PBXGroup;
+			children = (
+				55BCF4B02BC20C3B00DE071C /* Medication.swift */,
+				55BCF4B22BC20C7300DE071C /* MedicationsView.swift */,
+				55BCF4B42BC20CF300DE071C /* LogMedicationView.swift */,
+				55BCF4B62BC20DCC00DE071C /* MedicationHistoryView.swift */,
+			);
+			path = Medications;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +310,7 @@
 			files = (
 				55BCF4A92BC1A0ED00DE071C /* README.md in Resources */,
 				55BCF4862BC1A07F00DE071C /* Preview Assets.xcassets in Resources */,
+				55CCFF332BC21A090093A6B3 /* Launch Screen.storyboard in Resources */,
 				55BCF4832BC1A07F00DE071C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,8 +336,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55BCF47F2BC1A07D00DE071C /* ContentView.swift in Sources */,
-				55BCF4812BC1A07D00DE071C /* Item.swift in Sources */,
+				55BCF4C32BC20FE300DE071C /* WorkoutView.swift in Sources */,
+				55BCF4BD2BC20EA600DE071C /* LogContemplationView.swift in Sources */,
+				55BCF4BB2BC20E3C00DE071C /* ContemplationView.swift in Sources */,
+				55BCF4B92BC20E1800DE071C /* Contemplation.swift in Sources */,
+				55BCF4C12BC20F4400DE071C /* Workout.swift in Sources */,
+				55BCF4BF2BC20EDB00DE071C /* ContemplationsHistoryView.swift in Sources */,
+				55BCF4B72BC20DCC00DE071C /* MedicationHistoryView.swift in Sources */,
+				55BCF4B12BC20C3B00DE071C /* Medication.swift in Sources */,
+				55BCF4B32BC20C7300DE071C /* MedicationsView.swift in Sources */,
+				55BCF4C92BC211B800DE071C /* MainView.swift in Sources */,
+				55BCF4C72BC2104200DE071C /* WorkoutHistoryView.swift in Sources */,
+				55BCF4C52BC2101100DE071C /* LogWorkoutView.swift in Sources */,
+				55BCF4AF2BC20BF300DE071C /* Activity.swift in Sources */,
+				55BCF4B52BC20CF300DE071C /* LogMedicationView.swift in Sources */,
 				55BCF47D2BC1A07D00DE071C /* RCVRApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,11 +517,15 @@
 				DEVELOPMENT_TEAM = P7FYQ2HW53;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = RCVR;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -462,11 +550,15 @@
 				DEVELOPMENT_TEAM = P7FYQ2HW53;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = RCVR;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

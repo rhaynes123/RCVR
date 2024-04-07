@@ -26,7 +26,7 @@ struct ContemplationView: View {
         VStack {
             List {
                 ForEach(contemplations) { item in
-                    NavigationLink("\(item.technique.rawValue) \(item.timestamp, format: Date.FormatStyle(time: .standard))", destination: LogContemplationView(contemplation: item))
+                    NavigationLink("\(item.technique.rawValue) \(item.timestamp, format: Date.FormatStyle(time: .shortened))", destination: LogContemplationView(contemplation: item))
                 }
                 .onDelete(perform: deleteItems)
             }

@@ -30,7 +30,7 @@ struct RCVRApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MainView()
+            HomeView()
         }
         .modelContainer(sharedModelContainer)
     }

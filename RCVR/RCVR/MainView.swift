@@ -40,7 +40,7 @@ struct MainView: View {
             }
         } detail: {
             Text("Select an activity")
-        }
+        }.toolbar(.hidden)
         
     }
 

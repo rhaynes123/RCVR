@@ -16,6 +16,7 @@ final class RCVRUITests: XCTestCase {
         app = XCUIApplication()
         // In UI tests it is usually best to stop immediately when a failure occurs.
         app.launch()
+        app.buttons["My Activity And Trends"].tap()
         continueAfterFailure = false
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
@@ -26,29 +27,28 @@ final class RCVRUITests: XCTestCase {
         app = nil
     }
 
-    func testCreateWorkouts() throws {
+    func testCreateThenDeleteWorkouts() throws {
         // Arrange
-        
-        let app = XCUIApplication()
-        let collectionViewsQuery = app.collectionViews
-        collectionViewsQuery/*@START_MENU_TOKEN@*/.staticTexts["Add New Exercise"]/*[[".cells",".buttons[\"Add New Exercise\"].staticTexts[\"Add New Exercise\"]",".staticTexts[\"Add New Exercise\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
-        collectionViewsQuery/*@START_MENU_TOKEN@*/.staticTexts["Push Ups"]/*[[".cells",".buttons[\"Exercise, Push Ups\"].staticTexts[\"Push Ups\"]",".staticTexts[\"Push Ups\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
-        
-        let crunchesButton = collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["Crunches"]/*[[".cells.buttons[\"Crunches\"]",".buttons[\"Crunches\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        crunchesButton.tap()
-        app.navigationBars["_TtGC7SwiftUI32NavigationStackHosting"]/*@START_MENU_TOKEN@*/.buttons["Save"]/*[[".otherElements[\"Save\"].buttons[\"Save\"]",".buttons[\"Save\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        crunchesButton.tap()
-        collectionViewsQuery/*@START_MENU_TOKEN@*/.textFields["Sets:"]/*[[".cells.textFields[\"Sets:\"]",".textFields[\"Sets:\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        
-        let repsTextField = collectionViewsQuery/*@START_MENU_TOKEN@*/.textFields["Reps:"]/*[[".cells.textFields[\"Reps:\"]",".textFields[\"Reps:\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        repsTextField.tap()
-        repsTextField.tap()
-        app.collectionViews.containing(.other, identifier:"Vertical scroll bar, 1 page").element.tap()
-        collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["Log"]/*[[".cells.buttons[\"Log\"]",".buttons[\"Log\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         // Act
+       
+        
+        let collectionViewsQuery = app.collectionViews
+        collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["Add New Exercise"]/*[[".cells.buttons[\"Add New Exercise\"]",".buttons[\"Add New Exercise\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        let ttgc7swiftui32navigationstackhostingNavigationBar = app.navigationBars["_TtGC7SwiftUI32NavigationStackHosting"]
+        ttgc7swiftui32navigationstackhostingNavigationBar/*@START_MENU_TOKEN@*/.buttons["Save"]/*[[".otherElements[\"Save\"].buttons[\"Save\"]",".buttons[\"Save\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        let pushUpsButton = collectionViewsQuery.buttons["Push Ups"]
+        pushUpsButton.swipeLeft()
+        let deleteButton = collectionViewsQuery.buttons["Delete"]
                 
         // Assert
+        XCTAssertTrue(deleteButton.exists, "Delete button not found")
+        
+        // Tap the delete button
+        deleteButton.tap()
     }
+    
 
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {

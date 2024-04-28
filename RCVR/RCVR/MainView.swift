@@ -9,6 +9,7 @@ struct MainView: View {
     
     var body: some View {
         NavigationSplitView {
+            Image("logo").resizable().frame(width: 50, height: 50)
             Form {
                 
                 Text("My Activities and Trends").font(.title)

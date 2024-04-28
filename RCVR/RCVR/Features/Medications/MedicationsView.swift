@@ -24,22 +24,22 @@ struct MedicationsView: View {
     
     
     var body: some View {
-        VStack {
-            List {
-                ForEach(medications) { item in
-                    NavigationLink("\(item.title) \(item.timestamp, format: Date.FormatStyle(time: .shortened))", destination: LogMedicationView(medication: item))
-                }
-                .onDelete(perform: deleteItems)
+        List {
+            ForEach(medications) { item in
+                NavigationLink("\(item.title) \(item.timestamp, format: Date.FormatStyle(time: .shortened))", destination: LogMedicationView(medication: item))
             }
-        }.sheet(isPresented: $showSheet) {
-            medicationSheet()
+            .onDelete(perform: deleteItems)
         }
         
         Button(action : {
             showSheet.toggle()
         }) {
             Label("Add New \(Category.medication.rawValue)", systemImage: "pills.circle")
-        }.frame(width: 300, height: 50, alignment: .center)
+        }
+        .sheet(isPresented: $showSheet) {
+            medicationSheet()
+        }
+        .frame(width: 300, height: 50, alignment: .center)
             .background(Color.yellow)
             .foregroundColor(Color.black)
             .cornerRadius(10)

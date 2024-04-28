@@ -10,7 +10,7 @@ import SwiftData
 struct ContemplationView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var contemplations: [Contemplation]
-    @State private var showSheet: Bool = false
+    @State private var showContemplationSheet: Bool = false
     
     
     
@@ -23,22 +23,22 @@ struct ContemplationView: View {
     }
     
     var body: some View {
-        VStack {
-            List {
-                ForEach(contemplations) { item in
-                    NavigationLink("\(item.technique.rawValue) \(item.timestamp, format: Date.FormatStyle(time: .shortened))", destination: LogContemplationView(contemplation: item))
-                }
-                .onDelete(perform: deleteItems)
+        List {
+            ForEach(contemplations) { item in
+                NavigationLink("\(item.technique.rawValue) \(item.timestamp, format: Date.FormatStyle(time: .shortened))", destination: LogContemplationView(contemplation: item))
             }
-           
-        }.sheet(isPresented: $showSheet) {
-            contemplationSheet()
+            .onDelete(perform: deleteItems)
         }
+        
         Button(action : {
-            showSheet.toggle()
+            showContemplationSheet.toggle()
         }) {
             Label("Add New \(Category.contemplation.rawValue)", systemImage: "figure.mind.and.body")
-        }.frame(width: 300, height: 50, alignment: .center)
+        }
+        .sheet(isPresented: $showContemplationSheet) {
+            contemplationSheet()
+        }
+        .frame(width: 300, height: 50, alignment: .center)
             .background(Color.blue)
             .foregroundColor(Color.black)
             .cornerRadius(10)

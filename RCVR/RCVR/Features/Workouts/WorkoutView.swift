@@ -22,23 +22,20 @@ struct WorkoutView: View {
     
     
     var body: some View {
-        
-        VStack {
-            List {
-                ForEach(exercises) { item in
-                    NavigationLink("\(item.exercise.rawValue)", destination: LogWorkoutView(workout: item))
-                }
-                .onDelete(perform: deleteItems)
+        List {
+            ForEach(exercises) { item in
+                NavigationLink("\(item.exercise.rawValue)", destination: LogWorkoutView(workout: item))
             }
+            .onDelete(perform: deleteItems)
         }
-        
-        .sheet(isPresented: $showSheet){
-            workoutSheet()
-        }
+       
         Button(action : {
             showSheet.toggle()
         }) {
             Label("Add New \(Category.exercise.rawValue)", systemImage: "figure.run")
+        }
+        .sheet(isPresented: $showSheet){
+            workoutSheet()
         }
         .frame(width: 300, height: 50, alignment: .center)
             .background(Color.green)

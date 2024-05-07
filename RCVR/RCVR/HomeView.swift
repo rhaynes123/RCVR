@@ -20,13 +20,19 @@ struct HomeView: View {
                     .font(.title)
                     .multilineTextAlignment(.center)
                     .padding()
-                    .frame(width:400, height: 400)
+                    .frame(width:400, height: 300)
                     .background(.ultraThinMaterial.opacity(0.8))
                     .cornerRadius(20)
                     .shadow(color: Color.black.opacity(0.3), radius: 10)
                 
             }
-            NavigationLink("My Activity And Trends", destination: MainView()).buttonStyle(BorderedButtonStyle())
+            NavigationLink("My Activity And Trends", destination: MainView())
+                .buttonStyle(BorderedProminentButtonStyle())
+                .frame(width: 300, height: 50, alignment: .center)
+                    .background(Color.blue)
+                    .foregroundColor(Color.white)
+                    .cornerRadius(10)
+            
         }
         
         

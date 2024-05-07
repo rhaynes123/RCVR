@@ -31,7 +31,6 @@ final class RCVRUITests: XCTestCase {
         // Arrange
         // Act
        
-        
         let collectionViewsQuery = app.collectionViews
         collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["Add New Exercise"]/*[[".cells.buttons[\"Add New Exercise\"]",".buttons[\"Add New Exercise\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         
@@ -48,6 +47,7 @@ final class RCVRUITests: XCTestCase {
         // Tap the delete button
         deleteButton.tap()
     }
+    
     
 
     func testLaunchPerformance() throws {

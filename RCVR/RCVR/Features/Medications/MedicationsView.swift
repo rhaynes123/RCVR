@@ -55,8 +55,8 @@ struct medicationSheet : View {
     @State var time : Date = Date()
     private func addItem(newItem : Medication) {
         withAnimation {
-            if newItem.title.isEmpty {
-                print("Title is required")
+            if newItem.title.isEmpty || newItem.dose == 0 {
+                print("Title and dosage are required")
                 return
             }
             modelContext.insert(newItem)

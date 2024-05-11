@@ -21,19 +21,20 @@ struct LogContemplationView : View {
     }
     private func log(entry: ContemplationHistory){
         modelContext.insert(entry)
+        dismiss()
     }
     var body: some View {
         VStack {
             Form {
                 Text("Name: \(contemplation.technique.rawValue)")
-                Text("Contemplation Time at \(contemplation.timestamp, format: Date.FormatStyle( time: .standard))")
+                Text("Scheduled Contemplation Time at \(contemplation.timestamp, format: Date.FormatStyle( time: .shortened))")
                 
                 DatePicker("Start Time", selection: $startTime)
                 DatePicker("End Time", selection: $endTime)
                 Button("Log"){
                     let entry = ContemplationHistory(technique: contemplation.technique, startTime: startTime, endTime: endTime)
                     log(entry: entry)
-                    dismiss()
+                    
                 }
             }
         }

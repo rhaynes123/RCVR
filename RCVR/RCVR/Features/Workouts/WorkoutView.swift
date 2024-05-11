@@ -11,11 +11,14 @@ struct WorkoutView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var exercises: [Workout]
     @State private var showSheet: Bool = false
+    private var notificationManager:  NotificationManager = NotificationManager()
     
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             for index in offsets {
-                modelContext.delete(exercises[index])
+                let exercise : Workout = exercises[index]
+                notificationManager.removeNotification(id: exercise.notificationId?.uuidString)
+                modelContext.delete(exercise)
             }
         }
     }
@@ -24,7 +27,7 @@ struct WorkoutView: View {
     var body: some View {
         List {
             ForEach(exercises) { item in
-                NavigationLink("\(item.exercise.rawValue)", destination: LogWorkoutView(workout: item))
+                NavigationLink("\(item.exercise.rawValue) at \(item.timestamp, format: Date.FormatStyle(time: .shortened))", destination: LogWorkoutView(workout: item))
             }
             .onDelete(perform: deleteItems)
         }
@@ -35,7 +38,7 @@ struct WorkoutView: View {
             Label("Add New \(Category.exercise.rawValue)", systemImage: "figure.run")
         }
         .sheet(isPresented: $showSheet){
-            workoutSheet()
+            workoutSheet(notificationManager: self.notificationManager)
         }
         .frame(width: 300, height: 50, alignment: .center)
             .background(Color.green)
@@ -48,9 +51,20 @@ struct workoutSheet: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) private var modelContext
     @State var exercise : Exercise = .pushUp
+    @State var time : Date = Date()
+    var notificationManager:  NotificationManager
+    
+    init(notificationManager:  NotificationManager){
+        self.notificationManager = notificationManager
+    }
     private func addItem(newItem: Workout) {
         withAnimation {
             modelContext.insert(newItem)
+            if let notificationId = newItem.notificationId {
+                notificationManager.scheduleNotifications(from: newItem.timestamp, id: notificationId, subTitle: "Time for \(newItem.exercise.rawValue)")
+            }
+            
+            dismiss()
         }
     }
 
@@ -62,8 +76,9 @@ struct workoutSheet: View {
                         Text(technique.rawValue)
                         
                     }
+                    
                 }
-                
+                DatePicker("Time", selection: $time, displayedComponents: .hourAndMinute)
                 
             }.toolbar {
                 ToolbarItemGroup(placement: .topBarLeading) {
@@ -71,9 +86,10 @@ struct workoutSheet: View {
                 }
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     Button("Save") {
-                        let workout = Workout(timestamp: Date(), exercise: exercise, category: .exercise)
+                        let workout = Workout(timestamp: time, exercise: exercise, category: .exercise)
                         addItem(newItem: workout)
-                        dismiss()
+                        
+                        
                     }
                 }
             }

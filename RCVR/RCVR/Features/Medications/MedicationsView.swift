@@ -13,11 +13,17 @@ struct MedicationsView: View {
     @Query private var medications: [Medication]
     @State private var showSheet: Bool = false
     
-    
+    private var notificationManager:  NotificationManager = NotificationManager()
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             for index in offsets {
-                modelContext.delete(medications[index])
+                let med : Medication = medications[index]
+                if let notificationId = med.notificationId {
+                    
+                    notificationManager.removeNotification(id: notificationId.uuidString)
+                }
+                modelContext.delete(med)
+                
             }
         }
     }
@@ -37,7 +43,7 @@ struct MedicationsView: View {
             Label("Add New \(Category.medication.rawValue)", systemImage: "pills.circle")
         }
         .sheet(isPresented: $showSheet) {
-            medicationSheet()
+            medicationSheet(notificationManager: self.notificationManager)
         }
         .frame(width: 300, height: 50, alignment: .center)
             .background(Color.yellow)
@@ -49,17 +55,35 @@ struct MedicationsView: View {
 struct medicationSheet : View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) private var modelContext
-    @State var dosage : Int = 0
+    @State var dosage : Int = 1
     @State var title : String = ""
     @State var adminstration : Adminstration = .pill
     @State var time : Date = Date()
+    var notificationManager:  NotificationManager
+    
+    init(notificationManager:  NotificationManager){
+        self.notificationManager = notificationManager
+    }
+    
+    var notCompleted : Bool {
+        return self.title.isEmpty || self.dosage <= 0
+    }
+    
+    
     private func addItem(newItem : Medication) {
         withAnimation {
-            if newItem.title.isEmpty || newItem.dose == 0 {
+            if notCompleted {
                 print("Title and dosage are required")
                 return
             }
+            
             modelContext.insert(newItem)
+            if let notificationId = newItem.notificationId {
+                
+                notificationManager.scheduleNotifications(from: newItem.timestamp, id: notificationId, subTitle: "Time For (\(newItem.dose)) (\(newItem.administration)) \(newItem.title)")
+            }
+            
+            dismiss()
         }
     }
     
@@ -69,6 +93,9 @@ struct medicationSheet : View {
             Form {
                 Section {
                     TextField("Medication Name", text: $title)
+                } footer: {
+                    Text("Medication Name Is Required")
+                        .foregroundStyle(.red)
                 }
                 
                 Picker("Choose Administration", selection: $adminstration){
@@ -80,9 +107,14 @@ struct medicationSheet : View {
                 
                 Section {
                     TextField("Dose", value: $dosage, format: .number)
+                        .keyboardType(.numberPad)
                 } header: {
                     Text("Dosage")
+                } footer: {
+                    Text("Dosage can not be zero")
+                        .foregroundStyle(.red)
                 }
+                
                 DatePicker("Time", selection: $time, displayedComponents: .hourAndMinute)
                 
             }
@@ -91,11 +123,13 @@ struct medicationSheet : View {
                     Button("Cancel") {dismiss()}
                 }
                 ToolbarItemGroup(placement: .topBarTrailing) {
+                    
                     Button("Save") {
                         let medication = Medication(timestamp: time, administration: adminstration, title: title, category: .medication, dose: dosage)
                         addItem(newItem: medication)
-                        dismiss()
+                        
                     }
+                    .disabled(notCompleted)
                 }
             }
         }

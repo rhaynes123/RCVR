@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55ACC1BB2BE9AD6700A34D7B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55ACC1BA2BE9AD6700A34D7B /* NotificationManager.swift */; };
 		55BCF47D2BC1A07D00DE071C /* RCVRApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF47C2BC1A07D00DE071C /* RCVRApp.swift */; };
 		55BCF4832BC1A07F00DE071C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55BCF4822BC1A07F00DE071C /* Assets.xcassets */; };
 		55BCF4862BC1A07F00DE071C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55BCF4852BC1A07F00DE071C /* Preview Assets.xcassets */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		5584AD7C2BDD5E560050DC37 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		55ACC1BA2BE9AD6700A34D7B /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		55BCF4792BC1A07D00DE071C /* RCVR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RCVR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55BCF47C2BC1A07D00DE071C /* RCVRApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCVRApp.swift; sourceTree = "<group>"; };
 		55BCF4822BC1A07F00DE071C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -104,6 +106,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55ACC1B92BE9ACD900A34D7B /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				55ACC1BA2BE9AD6700A34D7B /* NotificationManager.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
 		55BCF4702BC1A07D00DE071C = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +178,7 @@
 		55BCF4AA2BC20B6A00DE071C /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				55ACC1B92BE9ACD900A34D7B /* Notifications */,
 				55BCF4AD2BC20B9500DE071C /* Medications */,
 				55BCF4AC2BC20B8A00DE071C /* Contemplations */,
 				55BCF4AB2BC20B7E00DE071C /* Workouts */,
@@ -342,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55BCF4C32BC20FE300DE071C /* WorkoutView.swift in Sources */,
+				55ACC1BB2BE9AD6700A34D7B /* NotificationManager.swift in Sources */,
 				55BCF4BD2BC20EA600DE071C /* LogContemplationView.swift in Sources */,
 				55BCF4BB2BC20E3C00DE071C /* ContemplationView.swift in Sources */,
 				55BCF4B92BC20E1800DE071C /* Contemplation.swift in Sources */,

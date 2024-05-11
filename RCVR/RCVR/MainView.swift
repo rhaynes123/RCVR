@@ -6,7 +6,7 @@
 //
 import SwiftUI
 struct MainView: View {
-    
+    private var notificationManager: NotificationManager = NotificationManager()
     var body: some View {
         NavigationSplitView {
             Image("logo").resizable().frame(width: 50, height: 50)
@@ -42,6 +42,13 @@ struct MainView: View {
         } detail: {
             Text("Select an activity")
         }.toolbar(.hidden)
+            .onAppear{
+                notificationManager.requestNotificationAuthorization()
+                
+            }
+            .task {
+                await notificationManager.resetBadge()
+            }
         
     }
 

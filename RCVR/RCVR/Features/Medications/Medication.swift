@@ -14,12 +14,14 @@ final class Medication: Activity {
     var timestamp: Date
     var title: String
     var dose: Int
-    init(timestamp: Date, administration: Adminstration, title: String, category: Category, dose: Int) {
+    var notificationId: UUID?
+    init(timestamp: Date, administration: Adminstration, title: String, category: Category, dose: Int, notificationId : UUID = UUID()) {
         self.title = title
         self.administration = administration
         self.category = category
         self.timestamp = timestamp
         self.dose = dose
+        self.notificationId = notificationId
     }
 }
 
@@ -41,5 +43,6 @@ enum Adminstration: String, Codable, CaseIterable {
     case pill = "Pill"
     case teaspoon = "Teaspoon"
     case injection = "Injection"
+    case inhale = "Inhale"
 }
 

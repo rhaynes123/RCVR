@@ -6,8 +6,9 @@
 //
 
 import Foundation
-protocol Activity{
+protocol Activity {
     var category: Category { get set }
+    var notificationId : UUID? {get set}
 }
 
 enum Category: String, CaseIterable, Codable {

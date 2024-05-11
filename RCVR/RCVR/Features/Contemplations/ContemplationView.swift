@@ -12,12 +12,17 @@ struct ContemplationView: View {
     @Query private var contemplations: [Contemplation]
     @State private var showContemplationSheet: Bool = false
     
-    
+    private var notificationManager:  NotificationManager = NotificationManager()
     
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             for index in offsets {
-                modelContext.delete(contemplations[index])
+                let cont : Contemplation = contemplations[index]
+                if let notificationId = cont.notificationId {
+                    notificationManager.removeNotification(id: notificationId.uuidString)
+                }
+                
+                modelContext.delete(cont)
             }
         }
     }
@@ -36,7 +41,7 @@ struct ContemplationView: View {
             Label("Add New \(Category.contemplation.rawValue)", systemImage: "figure.mind.and.body")
         }
         .sheet(isPresented: $showContemplationSheet) {
-            contemplationSheet()
+            contemplationSheet(notificationManager: self.notificationManager)
         }
         .frame(width: 300, height: 50, alignment: .center)
             .background(Color.blue)
@@ -50,9 +55,15 @@ struct contemplationSheet: View {
     @Environment(\.modelContext) private var modelContext
     @State var technique : Technique = .meditation
     @State var time : Date = Date()
+    var notificationManager:  NotificationManager
+    
+    init(notificationManager:  NotificationManager){
+        self.notificationManager = notificationManager
+    }
     private func addItem(newItem : Contemplation) {
         withAnimation {
             modelContext.insert(newItem)
+            notificationManager.scheduleNotifications(from: newItem.timestamp, id: newItem.notificationId ?? UUID(), subTitle: "Time For \(newItem.technique)")
         }
     }
     var body: some View {
@@ -72,8 +83,9 @@ struct contemplationSheet: View {
                 }
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     Button("Save") {
-                        let newItem = Contemplation(timestamp: Date(), category: .contemplation, technique: technique)
+                        let newItem = Contemplation(timestamp: time, category: .contemplation, technique: technique)
                         addItem(newItem: newItem)
+                       
                         dismiss()
                     }
                 }

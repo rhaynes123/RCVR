@@ -12,11 +12,13 @@ final class Contemplation: Activity {
     var category: Category
     var timestamp: Date
     var technique: Technique
-    init(timestamp: Date, category: Category, technique: Technique) {
+    var notificationId: UUID?
+    init(timestamp: Date, category: Category, technique: Technique, notificationId: UUID = UUID()) {
         
         self.category = category
         self.timestamp = timestamp
         self.technique = technique
+        self.notificationId = notificationId
     }
     
 }

@@ -15,10 +15,12 @@ final class Workout: Activity {
     
     var timestamp: Date
     var exercise: Exercise
-    init(timestamp: Date, exercise: Exercise, category: Category) {
+    var notificationId: UUID?
+    init(timestamp: Date, exercise: Exercise, category: Category, notificationId: UUID? = UUID()) {
         self.exercise = exercise
         self.category = category
         self.timestamp = timestamp
+        self.notificationId = notificationId
     }
 }
 

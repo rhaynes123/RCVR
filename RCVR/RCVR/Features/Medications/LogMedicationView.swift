@@ -25,7 +25,7 @@ struct LogMedicationView: View {
             Form {
                 Text("Name: \(medication.title)")
                 Text("Dosage: \(medication.dose)  \(medication.administration.rawValue)(s)")
-                Text("Dosage Time at \(medication.timestamp, format: Date.FormatStyle( time: .standard))")
+                Text("Dosage Time at \(medication.timestamp, format: Date.FormatStyle( time: .shortened))")
                 
                 DatePicker("Actual Time", selection: $actualTime)
                 Button("Log"){

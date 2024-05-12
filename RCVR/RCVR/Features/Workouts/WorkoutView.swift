@@ -83,14 +83,15 @@ struct workoutSheet: View {
             }.toolbar {
                 ToolbarItemGroup(placement: .topBarLeading) {
                     Button("Cancel") {dismiss()}
+                        .buttonStyle(.bordered)
                 }
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     Button("Save") {
                         let workout = Workout(timestamp: time, exercise: exercise, category: .exercise)
                         addItem(newItem: workout)
                         
-                        
                     }
+                    .buttonStyle(.borderedProminent)
                 }
             }
         }

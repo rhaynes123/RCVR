@@ -29,15 +29,17 @@ final class RCVRUITests: XCTestCase {
 
     func testCreateThenDeleteWorkouts() throws {
         // Arrange
-        // Act
-       
+        let pushUpsPredicate = NSPredicate(format: "label CONTAINS[c] 'Push ups'")
         let collectionViewsQuery = app.collectionViews
+        
+        // Act
+        
         collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["Add New Exercise"]/*[[".cells.buttons[\"Add New Exercise\"]",".buttons[\"Add New Exercise\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         
         let ttgc7swiftui32navigationstackhostingNavigationBar = app.navigationBars["_TtGC7SwiftUI32NavigationStackHosting"]
         ttgc7swiftui32navigationstackhostingNavigationBar/*@START_MENU_TOKEN@*/.buttons["Save"]/*[[".otherElements[\"Save\"].buttons[\"Save\"]",".buttons[\"Save\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         
-        let pushUpsButton = collectionViewsQuery.buttons["Push Ups"]
+        let pushUpsButton = collectionViewsQuery.buttons.containing(pushUpsPredicate).firstMatch
         pushUpsButton.swipeLeft()
         let deleteButton = collectionViewsQuery.buttons["Delete"]
                 
@@ -47,6 +49,54 @@ final class RCVRUITests: XCTestCase {
         // Tap the delete button
         deleteButton.tap()
     }
+    
+    func testCanCreateThenDeleteMedication() throws {
+        // Arrange
+        let name = "Asprin"
+        let asprinPredicate = NSPredicate(format: "label CONTAINS[c] '\(name)'")
+        let collectionViewsQuery = app.collectionViews
+        
+        // Act
+        collectionViewsQuery/*@START_MENU_TOKEN@*/.staticTexts["Add New Medication"]/*[[".cells",".buttons[\"Add New Medication\"].staticTexts[\"Add New Medication\"]",".staticTexts[\"Add New Medication\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+        let medicationName = collectionViewsQuery.textFields["Medication Name"]
+        medicationName.tap()
+        medicationName.typeText(name)
+        
+        
+        app.navigationBars["_TtGC7SwiftUI32NavigationStackHosting"]/*@START_MENU_TOKEN@*/.buttons["Save"]/*[[".otherElements[\"Save\"].buttons[\"Save\"]",".buttons[\"Save\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        let asprinButton = collectionViewsQuery.buttons.containing(asprinPredicate).firstMatch
+        asprinButton.swipeLeft()
+        let deleteButton = collectionViewsQuery.buttons["Delete"]
+                
+        // Assert
+        XCTAssertTrue(deleteButton.exists, "Delete button not found")
+        
+        // Tap the delete button
+        deleteButton.tap()
+        
+    }
+    
+    func testCanCreateThenDeleteContemplation() throws {
+        // Arrange
+        let name = "Meditation"
+        let asprinPredicate = NSPredicate(format: "label CONTAINS[c] '\(name)'")
+        let collectionViewsQuery = app.collectionViews
+        
+        collectionViewsQuery.staticTexts["Add New Contemplation"].tap()
+        // Act
+        app.navigationBars["_TtGC7SwiftUI32NavigationStackHosting"]/*@START_MENU_TOKEN@*/.buttons["Save"]/*[[".otherElements[\"Save\"].buttons[\"Save\"]",".buttons[\"Save\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        let asprinButton = collectionViewsQuery.buttons.containing(asprinPredicate).firstMatch
+        asprinButton.swipeLeft()
+        let deleteButton = collectionViewsQuery.buttons["Delete"]
+                
+        // Assert
+        XCTAssertTrue(deleteButton.exists, "Delete button not found")
+        
+        // Tap the delete button
+        deleteButton.tap()
+        
+    }
+    
     
     
 

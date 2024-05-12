@@ -63,7 +63,10 @@ struct contemplationSheet: View {
     private func addItem(newItem : Contemplation) {
         withAnimation {
             modelContext.insert(newItem)
-            notificationManager.scheduleNotifications(from: newItem.timestamp, id: newItem.notificationId ?? UUID(), subTitle: "Time For \(newItem.technique)")
+            if let notificationId = newItem.notificationId {
+                notificationManager.scheduleNotifications(from: newItem.timestamp, id: notificationId, subTitle: "Time For \(newItem.technique)")
+            }
+            dismiss()
         }
     }
     var body: some View {
@@ -79,15 +82,15 @@ struct contemplationSheet: View {
                 
             }.toolbar {
                 ToolbarItemGroup(placement: .topBarLeading) {
-                    Button("Cancel") {dismiss()}
+                    Button("Cancel", role: .cancel) {dismiss()}
+                        .buttonStyle(.bordered)
                 }
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     Button("Save") {
                         let newItem = Contemplation(timestamp: time, category: .contemplation, technique: technique)
                         addItem(newItem: newItem)
-                       
-                        dismiss()
                     }
+                    .buttonStyle(.borderedProminent)
                 }
             }
         }

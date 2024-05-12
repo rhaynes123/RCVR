@@ -14,19 +14,19 @@ struct LogWorkoutView : View {
     @State private var endTime : Date = Date()
     @State private var sets: Int = 0
     @State private var reps: Int = 0
-    
+    var canLog : Bool {
+        return sets < 0 || reps < 0 || endTime < startTime
+    }
     var workout : Workout
     init(workout: Workout) {
         self.workout = workout
     }
     
     private func log(entry: WorkoutHistory){
-        if sets < 0 {
+        if canLog {
             return
         }
-        if reps < 0 {
-            return
-        }
+       
         modelContext.insert(entry)
         dismiss()
     }
@@ -37,6 +37,7 @@ struct LogWorkoutView : View {
                 
                 Section {
                     TextField("Sets:", value: $sets, format: .number)
+                        .keyboardType(.numberPad)
                 } header: {
                     Text("Sets")
                 } footer: {
@@ -46,6 +47,7 @@ struct LogWorkoutView : View {
                 
                 Section {
                     TextField("Reps:", value: $reps, format: .number)
+                        .keyboardType(.numberPad)
                 } header: {
                     Text("Reps")
                 } footer: {
@@ -60,7 +62,7 @@ struct LogWorkoutView : View {
                     let entry = WorkoutHistory(exercise: workout.exercise, startTime: startTime, endTime: endTime, sets: sets, reps: reps)
                     log(entry: entry)
                     
-                }
+                }.disabled(canLog)
             }
         }
     }

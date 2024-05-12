@@ -14,12 +14,17 @@ struct LogContemplationView : View {
     
     @State private var startTime : Date = Date()
     @State private var endTime : Date = Date()
-    
+    var canLog : Bool {
+        return endTime < startTime
+    }
     var contemplation : Contemplation
     init(contemplation: Contemplation) {
         self.contemplation = contemplation
     }
     private func log(entry: ContemplationHistory){
+        if canLog {
+            return
+        }
         modelContext.insert(entry)
         dismiss()
     }
@@ -35,7 +40,7 @@ struct LogContemplationView : View {
                     let entry = ContemplationHistory(technique: contemplation.technique, startTime: startTime, endTime: endTime)
                     log(entry: entry)
                     
-                }
+                }.disabled(canLog)
             }
         }
     }

@@ -120,7 +120,8 @@ struct medicationSheet : View {
             }
             .toolbar {
                 ToolbarItemGroup(placement: .topBarLeading) {
-                    Button("Cancel") {dismiss()}
+                    Button("Cancel", role: .cancel) {dismiss()}
+                        .buttonStyle(.bordered)
                 }
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     
@@ -129,6 +130,7 @@ struct medicationSheet : View {
                         addItem(newItem: medication)
                         
                     }
+                    .buttonStyle(.borderedProminent)
                     .disabled(notCompleted)
                 }
             }

@@ -39,17 +39,4 @@ final class WorkoutHistory {
         self.reps = reps
     }
 }
-enum Exercise: String, Codable, CaseIterable {
-    case pushUp = "Push Ups"
-    case crunches = "Crunches"
-    case lunges = "Lunges"
-    case hipthrusts = "Hip Thrusts"
-    case squats = "Squats"
-    case walking = "Walking"
-    case running = "Running"
-    case calfraises = "Calf Raises"
-    case bicepCurl = "Bicep Curl"
-    case pullups = "Pull Ups"
-    case wallPushUp = "Wall Push Ups"
-    case chinUps = "Chin Ups"
-}
+

@@ -64,7 +64,7 @@ struct contemplationSheet: View {
         withAnimation {
             modelContext.insert(newItem)
             if let notificationId = newItem.notificationId {
-                notificationManager.scheduleNotifications(from: newItem.timestamp, id: notificationId, subTitle: "Time For \(newItem.technique)")
+                notificationManager.scheduleNotifications(from: newItem.timestamp, id: notificationId, subTitle: "Time For \(newItem.technique.rawValue)")
             }
             dismiss()
         }

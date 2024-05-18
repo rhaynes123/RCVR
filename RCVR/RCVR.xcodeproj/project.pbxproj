@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55A35DE72BF8F8BC00565334 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A35DE62BF8F8BC00565334 /* Exercise.swift */; };
 		55ACC1BB2BE9AD6700A34D7B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55ACC1BA2BE9AD6700A34D7B /* NotificationManager.swift */; };
 		55BCF47D2BC1A07D00DE071C /* RCVRApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF47C2BC1A07D00DE071C /* RCVRApp.swift */; };
 		55BCF4832BC1A07F00DE071C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55BCF4822BC1A07F00DE071C /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		5584AD7C2BDD5E560050DC37 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		55A35DE62BF8F8BC00565334 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		55ACC1BA2BE9AD6700A34D7B /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		55BCF4792BC1A07D00DE071C /* RCVR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RCVR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55BCF47C2BC1A07D00DE071C /* RCVRApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCVRApp.swift; sourceTree = "<group>"; };
@@ -106,6 +108,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55A35DE52BF8F8A300565334 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				55A35DE62BF8F8BC00565334 /* Exercise.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		55ACC1B92BE9ACD900A34D7B /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +200,7 @@
 		55BCF4AB2BC20B7E00DE071C /* Workouts */ = {
 			isa = PBXGroup;
 			children = (
+				55A35DE52BF8F8A300565334 /* Enums */,
 				55BCF4C02BC20F4400DE071C /* Workout.swift */,
 				55BCF4C22BC20FE300DE071C /* WorkoutView.swift */,
 				55BCF4C42BC2101100DE071C /* LogWorkoutView.swift */,
@@ -369,6 +380,7 @@
 				55BF53D82BCA0A1400FD2C88 /* HomeView.swift in Sources */,
 				55CCFF352BC2F9890093A6B3 /* MainView.swift in Sources */,
 				55BCF47D2BC1A07D00DE071C /* RCVRApp.swift in Sources */,
+				55A35DE72BF8F8BC00565334 /* Exercise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,16 +15,21 @@ struct ContemplationsHistoryView: View {
     
     // MARK: Begin Private Methods
     private func getChartData(history: [ContemplationHistory]) -> [ContemplationChartData] {
-        var data : [ContemplationChartData] = []
+        var dataDict = Dictionary<String, [ContemplationHistory]>()
+        
         for hist in history {
-            if data.contains(where: {$0.contemplation == hist.technique.rawValue}) {
-                data.first{$0.contemplation == hist.technique.rawValue}?.history.append(hist)
+            let technique = hist.technique.rawValue
+            if var existinghistory = dataDict[technique]{
+                existinghistory.append(hist)
+                dataDict[technique] = existinghistory
             } else {
-                let chart : ContemplationChartData = ContemplationChartData(contemplation: hist.technique.rawValue, history: [hist])
-                data.append(chart)
+                dataDict[technique] = [hist]
             }
         }
-        return data
+        
+        return dataDict.map {
+            ContemplationChartData(contemplation: $0.key, history: $0.value)
+        }
     }
     // MARK: End Private Methods
     

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		55A35DE72BF8F8BC00565334 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A35DE62BF8F8BC00565334 /* Exercise.swift */; };
+		55A35DE92BF92E7600565334 /* WorkoutSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A35DE82BF92E7600565334 /* WorkoutSheetView.swift */; };
+		55A35DEB2BF92F1000565334 /* ContemplationSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A35DEA2BF92F1000565334 /* ContemplationSheetView.swift */; };
+		55A35DED2BF92F8D00565334 /* MedicationSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A35DEC2BF92F8D00565334 /* MedicationSheetView.swift */; };
 		55ACC1BB2BE9AD6700A34D7B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55ACC1BA2BE9AD6700A34D7B /* NotificationManager.swift */; };
 		55BCF47D2BC1A07D00DE071C /* RCVRApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCF47C2BC1A07D00DE071C /* RCVRApp.swift */; };
 		55BCF4832BC1A07F00DE071C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55BCF4822BC1A07F00DE071C /* Assets.xcassets */; };
@@ -54,6 +57,9 @@
 /* Begin PBXFileReference section */
 		5584AD7C2BDD5E560050DC37 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		55A35DE62BF8F8BC00565334 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		55A35DE82BF92E7600565334 /* WorkoutSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSheetView.swift; sourceTree = "<group>"; };
+		55A35DEA2BF92F1000565334 /* ContemplationSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContemplationSheetView.swift; sourceTree = "<group>"; };
+		55A35DEC2BF92F8D00565334 /* MedicationSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationSheetView.swift; sourceTree = "<group>"; };
 		55ACC1BA2BE9AD6700A34D7B /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		55BCF4792BC1A07D00DE071C /* RCVR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RCVR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55BCF47C2BC1A07D00DE071C /* RCVRApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCVRApp.swift; sourceTree = "<group>"; };
@@ -205,6 +211,7 @@
 				55BCF4C22BC20FE300DE071C /* WorkoutView.swift */,
 				55BCF4C42BC2101100DE071C /* LogWorkoutView.swift */,
 				55BCF4C62BC2104200DE071C /* WorkoutHistoryView.swift */,
+				55A35DE82BF92E7600565334 /* WorkoutSheetView.swift */,
 			);
 			path = Workouts;
 			sourceTree = "<group>";
@@ -216,6 +223,7 @@
 				55BCF4BA2BC20E3C00DE071C /* ContemplationView.swift */,
 				55BCF4BC2BC20EA600DE071C /* LogContemplationView.swift */,
 				55BCF4BE2BC20EDB00DE071C /* ContemplationsHistoryView.swift */,
+				55A35DEA2BF92F1000565334 /* ContemplationSheetView.swift */,
 			);
 			path = Contemplations;
 			sourceTree = "<group>";
@@ -227,6 +235,7 @@
 				55BCF4B22BC20C7300DE071C /* MedicationsView.swift */,
 				55BCF4B42BC20CF300DE071C /* LogMedicationView.swift */,
 				55BCF4B62BC20DCC00DE071C /* MedicationHistoryView.swift */,
+				55A35DEC2BF92F8D00565334 /* MedicationSheetView.swift */,
 			);
 			path = Medications;
 			sourceTree = "<group>";
@@ -369,10 +378,13 @@
 				55BCF4BB2BC20E3C00DE071C /* ContemplationView.swift in Sources */,
 				55BCF4B92BC20E1800DE071C /* Contemplation.swift in Sources */,
 				55BCF4C12BC20F4400DE071C /* Workout.swift in Sources */,
+				55A35DE92BF92E7600565334 /* WorkoutSheetView.swift in Sources */,
 				55BCF4BF2BC20EDB00DE071C /* ContemplationsHistoryView.swift in Sources */,
+				55A35DEB2BF92F1000565334 /* ContemplationSheetView.swift in Sources */,
 				55BCF4B72BC20DCC00DE071C /* MedicationHistoryView.swift in Sources */,
 				55BCF4B12BC20C3B00DE071C /* Medication.swift in Sources */,
 				55BCF4B32BC20C7300DE071C /* MedicationsView.swift in Sources */,
+				55A35DED2BF92F8D00565334 /* MedicationSheetView.swift in Sources */,
 				55BCF4C72BC2104200DE071C /* WorkoutHistoryView.swift in Sources */,
 				55BCF4C52BC2101100DE071C /* LogWorkoutView.swift in Sources */,
 				55BCF4AF2BC20BF300DE071C /* Activity.swift in Sources */,
@@ -542,7 +554,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.5;
+				CURRENT_PROJECT_VERSION = 1.0.6;
 				DEVELOPMENT_ASSET_PATHS = "\"RCVR/Preview Content\"";
 				DEVELOPMENT_TEAM = P7FYQ2HW53;
 				ENABLE_PREVIEWS = YES;
@@ -560,7 +572,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Richard.RCVR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -578,7 +590,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.5;
+				CURRENT_PROJECT_VERSION = 1.0.6;
 				DEVELOPMENT_ASSET_PATHS = "\"RCVR/Preview Content\"";
 				DEVELOPMENT_TEAM = P7FYQ2HW53;
 				ENABLE_PREVIEWS = YES;
@@ -596,7 +608,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Richard.RCVR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

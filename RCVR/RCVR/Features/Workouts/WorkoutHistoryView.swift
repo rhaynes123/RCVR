@@ -45,7 +45,12 @@ struct WorkoutHistoryView: View {
                         LineMark(
                             x: .value("Exercise StartTime", workout.startTime) ,
                             y: .value("Total Duration", totalDuration)
-                        )
+                        ).annotation(position: .top,
+                                     alignment: .leading,
+                                     spacing: 4){
+                            Text("Minutes \(workout.exercise.rawValue)")
+                                .font(.footnote)
+                        }
                     }
                     else {
                         LineMark(

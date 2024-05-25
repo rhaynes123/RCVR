@@ -14,23 +14,7 @@ struct ContemplationsHistoryView: View {
             , animation: .snappy) private var history: [ContemplationHistory]
     
     // MARK: Begin Private Methods
-    private func getChartData(history: [ContemplationHistory]) -> [ContemplationChartData] {
-        var dataDict = Dictionary<String, [ContemplationHistory]>()
-        
-        for hist in history {
-            let technique = hist.technique.rawValue
-            if var existinghistory = dataDict[technique]{
-                existinghistory.append(hist)
-                dataDict[technique] = existinghistory
-            } else {
-                dataDict[technique] = [hist]
-            }
-        }
-        
-        return dataDict.map {
-            ContemplationChartData(contemplation: $0.key, history: $0.value)
-        }
-    }
+   
     // MARK: End Private Methods
     
     var body: some View {
@@ -38,7 +22,7 @@ struct ContemplationsHistoryView: View {
             Text("Mental Contemplations")
             let totalTime = history.reduce(0){$0 + ($1.endTime.timeIntervalSince($1.startTime))}
             let lastContemplation : ContemplationHistory?  = history.last
-            let histData : [ContemplationChartData] = getChartData(history: self.history)
+            let histData : [ContemplationChartData] = ChartHelper.getChartData(history: self.history)
             Text("\(totalTime / 60 , format: .number) total minutes in contemplation as of \(lastContemplation?.endTime ?? Date(), format: Date.FormatStyle(date: .abbreviated))").font(.footnote)
             Chart(histData, id: \.contemplation)  { dat in
                
@@ -58,15 +42,7 @@ struct ContemplationsHistoryView: View {
     }
 }
 
-final class ContemplationChartData: Identifiable {
-    let contemplation: String
-    var history: [ContemplationHistory]
-    var id: String { contemplation }
-    init(contemplation: String, history: [ContemplationHistory]) {
-        self.contemplation = contemplation
-        self.history = history
-    }
-}
+
 
 #Preview {
     let container = try! ModelContainer(for: ContemplationHistory.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))

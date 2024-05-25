@@ -16,18 +16,7 @@ struct MedicationHistoryView: View {
     private var history: [MedicationHistory]
     
     // MARK: Begin Private Methods
-    private func getChartData(history: [MedicationHistory]) -> [MedicalChartData] {
-        var data : [MedicalChartData] = []
-        for medicalData in history {
-            if data.contains(where: {$0.medication == medicalData.title}) {
-                data.first{$0.medication == medicalData.title}?.history.append(medicalData)
-            } else {
-                let chart : MedicalChartData = MedicalChartData(medication: medicalData.title, history: [medicalData])
-                data.append(chart)
-            }
-        }
-        return data
-    }
+    
     // MARK: End Private Methods
     
     var body: some View {
@@ -35,7 +24,7 @@ struct MedicationHistoryView: View {
             Text("Medication History")
             let totalDoses =  history.reduce(0){$0 + ($1.dose)}
             let lastMedication : MedicationHistory?  = history.last
-            let medicalData : [MedicalChartData] = getChartData(history: self.history)
+            let medicalData : [MedicalChartData] = ChartHelper.getChartData(history: self.history)
             Text("\(totalDoses, format: .number) total treatments as of \(lastMedication?.dosageTime ?? Date(), format: Date.FormatStyle(date: .abbreviated))")
                 .font(.footnote)
             Chart(medicalData, id: \.medication)  { dat in
@@ -56,15 +45,7 @@ struct MedicationHistoryView: View {
     }
 }
 
-final class MedicalChartData: Identifiable {
-    let medication: String
-    var history: [MedicationHistory]
-    var id: String { medication }
-    init(medication: String, history: [MedicationHistory]) {
-        self.medication = medication
-        self.history = history
-    }
-}
+
 
 #Preview {
     let container = try! ModelContainer(for: MedicationHistory.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))

@@ -20,12 +20,17 @@ enum Exercise: String, Codable, CaseIterable {
     case wallPushUp = "Wall Push Ups"
     case chinUps = "Chin Ups"
     
-    var measurement : String {
+    var measurement : Measurement {
         switch self {
         case .running, .walking:
-            return "duration"
+            return .duration
         default:
-            return "reps"
+            return .repsAndSets
         }
     }
+}
+
+enum Measurement: String {
+    case duration = "duration"
+    case repsAndSets = "reps"
 }

@@ -38,7 +38,8 @@ struct contemplationSheet: View {
                 }
                 DatePicker("Time", selection: $time, displayedComponents: .hourAndMinute)
                 Section{
-                    Toggle("One Time", isOn: $isOneTime)
+                    Toggle("OneTime", isOn: $isOneTime)
+                        .accessibilityIdentifier("onetime")
                 } footer: {
                     Text("Choosing one time will prevent adding item to your list and a notification won't be made")
                 }

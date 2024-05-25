@@ -75,6 +75,7 @@ struct medicationSheet : View {
                 DatePicker("Time", selection: $time, displayedComponents: .hourAndMinute)
                 Section{
                     Toggle("One Time", isOn: $isOneTime)
+                        .accessibilityIdentifier("onetime")
                 } footer: {
                     Text("Choosing one time will prevent adding item to your list and a notification won't be made")
                 }
@@ -82,7 +83,7 @@ struct medicationSheet : View {
             }
             .toolbar {
                 ToolbarItemGroup(placement: .topBarLeading) {
-                    Button("Cancel", role: .cancel) {dismiss()}
+                    Button(isOneTime ? "Done":"Cancel", role: .cancel) {dismiss()}
                         .buttonStyle(.bordered)
                 }
                 ToolbarItemGroup(placement: .topBarTrailing) {

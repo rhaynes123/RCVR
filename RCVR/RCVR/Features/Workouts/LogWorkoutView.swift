@@ -14,16 +14,23 @@ struct LogWorkoutView : View {
     @State private var endTime : Date = Date()
     @State private var sets: Int = 0
     @State private var reps: Int = 0
-    var canLog : Bool {
-        return sets < 0 || reps < 0 || endTime < startTime
-    }
+    @State private var hasErrors : Bool = false
     var workout : Workout
     init(workout: Workout) {
         self.workout = workout
     }
     
+    private func formIsInValid() -> Bool {
+        switch self.workout.exercise.measurement {
+        case .duration:
+            return endTime < startTime
+        case .repsAndSets:
+            return sets <= 0 || reps <= 0 || endTime < startTime
+        }
+    }
     private func log(entry: WorkoutHistory){
-        if canLog {
+        if formIsInValid() {
+            hasErrors.toggle()
             return
         }
        
@@ -35,34 +42,42 @@ struct LogWorkoutView : View {
             Form {
                 Text("Name: \(workout.exercise.rawValue)")
                 
-                Section {
-                    TextField("Sets:", value: $sets, format: .number)
-                        .keyboardType(.numberPad)
-                } header: {
-                    Text("Sets")
-                } footer: {
-                    Text("Sets can not be less than zero")
-                        .foregroundStyle(.red)
+                if workout.exercise.measurement == .repsAndSets{
+                    Section {
+                        TextField("Sets:", value: $sets, format: .number)
+                            .keyboardType(.numberPad)
+                    } header: {
+                        Text("Sets")
+                    } footer: {
+                        Text("Sets can not be zero")
+                            .foregroundStyle( hasErrors ? .red : .gray)
+                    }
+                    
+                    Section {
+                        TextField("Reps:", value: $reps, format: .number)
+                            .keyboardType(.numberPad)
+                    } header: {
+                        Text("Reps")
+                    } footer: {
+                        Text("Reps can not be zero")
+                            .foregroundStyle( hasErrors ? .red : .gray)
+                    }
                 }
                 
-                Section {
-                    TextField("Reps:", value: $reps, format: .number)
-                        .keyboardType(.numberPad)
-                } header: {
-                    Text("Reps")
-                } footer: {
-                    Text("Reps can not be less than zero")
-                        .foregroundStyle(.red)
-                }
                 
-                DatePicker("Start Time", selection: $startTime)
-                DatePicker("End Time", selection: $endTime)
+                Section {
+                    DatePicker("Start Time", selection: $startTime)
+                    DatePicker("End Time", selection: $endTime)
+                } footer: {
+                    Text("End can not be before start")
+                        .foregroundStyle( hasErrors ? .red : .gray)
+                }
                 
                 Button("Log"){
                     let entry = WorkoutHistory(exercise: workout.exercise, startTime: startTime, endTime: endTime, sets: sets, reps: reps)
                     log(entry: entry)
                     
-                }.disabled(canLog)
+                }
             }
         }
     }

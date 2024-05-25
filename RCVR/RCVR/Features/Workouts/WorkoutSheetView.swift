@@ -12,7 +12,7 @@ struct workoutSheet: View {
     @Environment(\.modelContext) private var modelContext
     @State var exercise : Exercise = .pushUp
     @State var time : Date = Date()
-    @State private var isOneTime : Bool = false
+    @State var isOneTime : Bool = false
     var notificationManager:  NotificationManager
     
     init(notificationManager:  NotificationManager){
@@ -41,14 +41,17 @@ struct workoutSheet: View {
                 }
                 DatePicker("Time", selection: $time, displayedComponents: .hourAndMinute)
                 Section{
-                    Toggle("One Time", isOn: $isOneTime)
+                    Toggle(isOn: $isOneTime){
+                        Text("One Time")
+                    }
+                    .accessibilityIdentifier("isOneTime")
                 } footer: {
                     Text("Choosing one time will prevent adding item to your list and a notification won't be made")
                 }
                 
             }.toolbar {
                 ToolbarItemGroup(placement: .topBarLeading) {
-                    Button("Cancel") {dismiss()}
+                    Button(isOneTime ? "Done" : "Cancel") {dismiss()}
                         .buttonStyle(.bordered)
                 }
                 ToolbarItemGroup(placement: .topBarTrailing) {

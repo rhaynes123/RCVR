@@ -53,6 +53,7 @@ struct workoutSheet: View {
                 ToolbarItemGroup(placement: .topBarLeading) {
                     Button(isOneTime ? "Done" : "Cancel") {dismiss()}
                         .buttonStyle(.bordered)
+                        .accessibilityIdentifier("doneOrCancel")
                 }
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     let workout = Workout(timestamp: time, exercise: exercise, category: .exercise)

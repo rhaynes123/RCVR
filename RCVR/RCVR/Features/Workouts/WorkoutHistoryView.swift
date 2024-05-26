@@ -53,6 +53,7 @@ struct WorkoutHistoryView: View {
                 }.foregroundStyle(by: .value("Exercise", hisDat.id))
                     .symbol(by: .value("Exercise", hisDat.id))
             }
+            .accessibilityIdentifier("workoutChart")
         }
         
         List(history){ workout in
@@ -66,6 +67,7 @@ struct WorkoutHistoryView: View {
             
             
         }
+        .accessibilityIdentifier("workoutList")
     }
 }
 

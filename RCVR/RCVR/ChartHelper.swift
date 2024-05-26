@@ -42,8 +42,8 @@ struct ChartHelper {
     static func getChartData(history: [MedicationHistory]) -> [MedicalChartData] {
         var data : [MedicalChartData] = []
         for medicalData in history {
-            if data.contains(where: {$0.medication == medicalData.title}) {
-                data.first{$0.medication == medicalData.title}?.history.append(medicalData)
+            if data.contains(where: {$0.medication.caseInsensitiveCompare(medicalData.title) == .orderedSame}) {
+                data.first{$0.medication.caseInsensitiveCompare(medicalData.title) == .orderedSame }?.history.append(medicalData)
             } else {
                 let chart : MedicalChartData = MedicalChartData(medication: medicalData.title, history: [medicalData])
                 data.append(chart)

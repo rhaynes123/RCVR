@@ -33,7 +33,7 @@ final class RCVRUITests: XCTestCase {
         let collectionViewsQuery = app.collectionViews
         
         // Act
-        
+        app.swipeUp()
         collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["Add New Exercise"]/*[[".cells.buttons[\"Add New Exercise\"]",".buttons[\"Add New Exercise\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         
         let ttgc7swiftui32navigationstackhostingNavigationBar = app.navigationBars["_TtGC7SwiftUI32NavigationStackHosting"]
@@ -57,6 +57,7 @@ final class RCVRUITests: XCTestCase {
         let collectionViewsQuery = app.collectionViews
         
         // Act
+        app.swipeUp()
         collectionViewsQuery/*@START_MENU_TOKEN@*/.staticTexts["Add New Medication"]/*[[".cells",".buttons[\"Add New Medication\"].staticTexts[\"Add New Medication\"]",".staticTexts[\"Add New Medication\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
         let medicationName = collectionViewsQuery.textFields["Medication Name"]
         medicationName.tap()
@@ -81,7 +82,7 @@ final class RCVRUITests: XCTestCase {
         let name = "Meditation"
         let asprinPredicate = NSPredicate(format: "label CONTAINS[c] '\(name)'")
         let collectionViewsQuery = app.collectionViews
-        
+        app.swipeUp()
         collectionViewsQuery.staticTexts["Add New Contemplation"].tap()
         // Act
         app.navigationBars["_TtGC7SwiftUI32NavigationStackHosting"]/*@START_MENU_TOKEN@*/.buttons["Save"]/*[[".otherElements[\"Save\"].buttons[\"Save\"]",".buttons[\"Save\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
@@ -97,9 +98,9 @@ final class RCVRUITests: XCTestCase {
         
     }
     
-    func testCanCancel() throws {
+    func testExerciseCanCancel() throws {
         let collectionViewsQuery = app.collectionViews
-        collectionViewsQuery/*@START_MENU_TOKEN@*/.staticTexts["Add New Exercise"]/*[[".cells",".buttons[\"Add New Exercise\"].staticTexts[\"Add New Exercise\"]",".staticTexts[\"Add New Exercise\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+        collectionViewsQuery.staticTexts["Add New Exercise"].tap()
         
         let deleteButton = app.buttons["Cancel"]
         deleteButton.tap()
@@ -129,7 +130,7 @@ final class RCVRUITests: XCTestCase {
         
         // Assert
         collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["Log"]/*[[".cells.buttons[\"Log\"]",".buttons[\"Log\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        collectionViewsQuery.buttons["Done"].tap()
+        app.buttons["doneOrCancel"].tap()
     }
     
     func testWorkOutCanNotLogNegatives() throws {
@@ -156,6 +157,32 @@ final class RCVRUITests: XCTestCase {
         XCTAssertFalse(collectionViewsQuery.buttons["Done"].exists)
     }
     
+    
+    func testContemplationTrendsShow() throws {
+        // Arrange
+        app.collectionViews/*@START_MENU_TOKEN@*/.staticTexts["Contemplation Trends"]/*[[".cells",".buttons[\"Contemplation Trends\"].staticTexts[\"Contemplation Trends\"]",".staticTexts[\"Contemplation Trends\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+        // Act
+        // Assert
+        XCTAssertTrue(app.otherElements["contemplationChart"].exists)
+        //XCTAssertTrue(app.otherElements["contemplationList"].exists)
+        
+    }
+    
+    func testWorkoutTrendsShow() throws {
+        // Arrange
+        app.collectionViews.staticTexts["Exercise Trends"].tap()
+        // Act
+        // Assert
+        XCTAssertTrue(app.otherElements["workoutChart"].exists)
+    }
+    
+    func testMedicationTrendsShow() throws {
+        // Arrange
+        app.collectionViews.staticTexts["Medication Trends"].tap()
+        // Act
+        // Assert
+        XCTAssertTrue(app.otherElements["medicationChart"].exists)
+    }
     
 
     func testLaunchPerformance() throws {

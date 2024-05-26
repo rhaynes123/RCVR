@@ -37,7 +37,7 @@ struct MedicationHistoryView: View {
                     
                 }.foregroundStyle(by: .value("Medication", dat.medication))
                 .symbol(by: .value("Medication", dat.medication))
-            }
+            }.accessibilityIdentifier("medicationChart")
         }
         List(history){ med in
             Text("\(med.dose) \(med.administration.rawValue)(s) of \(med.title) taken at \(med.dosageTime, format: Date.FormatStyle(date:.numeric, time: .shortened))")

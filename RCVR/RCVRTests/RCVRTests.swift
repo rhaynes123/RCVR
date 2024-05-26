@@ -7,9 +7,9 @@
 
 import XCTest
 @testable import RCVR
+import SwiftData
 
 final class RCVRTests: XCTestCase {
-
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -18,12 +18,46 @@ final class RCVRTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func testWorkoutChartShouldGroupTogetherDataByExercise() throws {
+        // Arrange
+        var expected = 2
+        var testHistoryData : [WorkoutHistory] = [
+            WorkoutHistory(exercise: .bicepCurl, startTime: Date(), endTime: Date(), sets: 3, reps: 5),
+            WorkoutHistory(exercise: .bicepCurl, startTime: Date(), endTime: Date(), sets: 3, reps: 5),
+            WorkoutHistory(exercise: .chinUps, startTime: Date(), endTime: Date(), sets: 4, reps: 5)
+        ]
+        // Act
+        var actual = ChartHelper.getChartData(history: testHistoryData)
+        // Assert
+        XCTAssertEqual(actual.count, expected)
+    }
+    
+    func testContemplationChartShouldGroupTogetherDataByTechnique() throws {
+        // Arrange
+        var expected = 2
+        var testHistoryData : [ContemplationHistory] = [
+            ContemplationHistory(technique: .deepBreath, startTime: Date(), endTime: Date()),
+            ContemplationHistory(technique: .deepBreath, startTime: Date(), endTime: Date()),
+            ContemplationHistory(technique: .prayer, startTime: Date(), endTime: Date())
+        ]
+        // Act
+        var actual = ChartHelper.getChartData(history: testHistoryData)
+        // Assert
+        XCTAssertEqual(actual.count, expected)
+    }
+    
+    func testMedicationChartShouldGroupTogetherDataByTitle() throws {
+        // Arrange
+        var expected = 2
+        var testHistoryData : [MedicationHistory] = [
+            MedicationHistory(administration: .injection, startTime: Date(), dose: 1, title: "Insulin"),
+            MedicationHistory(administration: .injection, startTime: Date(), dose: 1, title: "insulin"),
+            MedicationHistory(administration: .injection, startTime: Date(), dose: 1, title: "Steriods")
+        ]
+        // Act
+        var actual = ChartHelper.getChartData(history: testHistoryData)
+        // Assert
+        XCTAssertEqual(actual.count, expected)
     }
 
     func testPerformanceExample() throws {

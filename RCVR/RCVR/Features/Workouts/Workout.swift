@@ -25,7 +25,7 @@ final class Workout: Activity {
 }
 
 @Model
-final class WorkoutHistory {
+final class WorkoutHistory: Chartable {
     var exercise: Exercise
     var startTime : Date
     var endTime : Date
@@ -37,6 +37,10 @@ final class WorkoutHistory {
         self.endTime = endTime
         self.sets = sets
         self.reps = reps
+    }
+    
+    func getChartId() -> String {
+        return exercise.rawValue
     }
 }
 

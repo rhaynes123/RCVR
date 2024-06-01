@@ -24,7 +24,7 @@ final class Contemplation: Activity {
 }
 
 @Model
-final class ContemplationHistory {
+final class ContemplationHistory: Chartable {
     var technique: Technique
     var startTime : Date
     var endTime : Date
@@ -32,6 +32,10 @@ final class ContemplationHistory {
         self.technique = technique
         self.startTime = startTime
         self.endTime = endTime
+    }
+    
+    func getChartId() -> String {
+        return technique.rawValue
     }
 }
 

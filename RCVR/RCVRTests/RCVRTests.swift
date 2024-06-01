@@ -20,42 +20,42 @@ final class RCVRTests: XCTestCase {
 
     func testWorkoutChartShouldGroupTogetherDataByExercise() throws {
         // Arrange
-        var expected = 2
-        var testHistoryData : [WorkoutHistory] = [
+        let expected = 2
+        let testHistoryData : [WorkoutHistory] = [
             WorkoutHistory(exercise: .bicepCurl, startTime: Date(), endTime: Date(), sets: 3, reps: 5),
             WorkoutHistory(exercise: .bicepCurl, startTime: Date(), endTime: Date(), sets: 3, reps: 5),
             WorkoutHistory(exercise: .chinUps, startTime: Date(), endTime: Date(), sets: 4, reps: 5)
         ]
         // Act
-        var actual = ChartHelper.getChartData(history: testHistoryData)
+        let actual = ChartHelper.getChartData(history: testHistoryData)
         // Assert
         XCTAssertEqual(actual.count, expected)
     }
     
     func testContemplationChartShouldGroupTogetherDataByTechnique() throws {
         // Arrange
-        var expected = 2
-        var testHistoryData : [ContemplationHistory] = [
+        let expected = 2
+        let testHistoryData : [ContemplationHistory] = [
             ContemplationHistory(technique: .deepBreath, startTime: Date(), endTime: Date()),
             ContemplationHistory(technique: .deepBreath, startTime: Date(), endTime: Date()),
             ContemplationHistory(technique: .prayer, startTime: Date(), endTime: Date())
         ]
         // Act
-        var actual = ChartHelper.getChartData(history: testHistoryData)
+        let actual = ChartHelper.getChartData(history: testHistoryData)
         // Assert
         XCTAssertEqual(actual.count, expected)
     }
     
     func testMedicationChartShouldGroupTogetherDataByTitle() throws {
         // Arrange
-        var expected = 2
-        var testHistoryData : [MedicationHistory] = [
+        let expected = 2
+        let testHistoryData : [MedicationHistory] = [
             MedicationHistory(administration: .injection, startTime: Date(), dose: 1, title: "Insulin"),
             MedicationHistory(administration: .injection, startTime: Date(), dose: 1, title: "insulin"),
             MedicationHistory(administration: .injection, startTime: Date(), dose: 1, title: "Steriods")
         ]
         // Act
-        var actual = ChartHelper.getChartData(history: testHistoryData)
+        let actual = ChartHelper.getChartData(history: testHistoryData)
         // Assert
         XCTAssertEqual(actual.count, expected)
     }

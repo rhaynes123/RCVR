@@ -22,14 +22,14 @@ struct WorkoutHistoryView: View {
             Text("Workouts Completed")
             let totalReps = history.reduce(0){$0 + ($1.reps * $1.sets)}
             let lastworkout : WorkoutHistory?  = history.last
-            let histData : [WorkoutChartData] = ChartHelper.getChartData(history: self.history)
+            let histData : [ChartData] = ChartHelper.getChartData(history: self.history)
             
             Text("\(totalReps) total reps as of \(lastworkout?.endTime ?? Date(), format: Date.FormatStyle(date: .abbreviated))")
                 .font(.footnote)
             
             Chart(histData, id: \.id) { hisDat in
                
-                ForEach(hisDat.history){ workout in
+                ForEach(hisDat.history as! [WorkoutHistory]){ workout in
                     if workout.exercise.measurement == .duration {
                         let totalDuration = (workout.endTime.timeIntervalSince(workout.startTime) / 60)
                         LineMark(

@@ -6,3 +6,6 @@
 //
 
 import Foundation
+protocol Chartable: Identifiable {
+    func getChartId() -> String
+}

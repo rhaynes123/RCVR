@@ -46,8 +46,9 @@ struct contemplationSheet: View {
                 
             }.toolbar {
                 ToolbarItemGroup(placement: .topBarLeading) {
-                    Button("Cancel", role: .cancel) {dismiss()}
+                    Button(isOneTime ? "Done":"Cancel", role: .cancel) {dismiss()}
                         .buttonStyle(.bordered)
+                        .accessibilityIdentifier("doneOrCancel")
                 }
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     let newItem = Contemplation(timestamp: time, category: .contemplation, technique: technique)

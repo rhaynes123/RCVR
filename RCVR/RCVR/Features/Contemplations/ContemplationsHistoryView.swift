@@ -22,19 +22,19 @@ struct ContemplationsHistoryView: View {
             Text("Mental Contemplations")
             let totalTime = history.reduce(0){$0 + ($1.endTime.timeIntervalSince($1.startTime))}
             let lastContemplation : ContemplationHistory?  = history.last
-            let histData : [ContemplationChartData] = ChartHelper.getChartData(history: self.history)
+            let histData : [ChartData] = ChartHelper.getChartData(history: self.history)
             
             Text("\(totalTime / 60 , format: .number) total minutes in contemplation as of \(lastContemplation?.endTime ?? Date(), format: Date.FormatStyle(date: .abbreviated))").font(.footnote)
             
-            Chart(histData, id: \.contemplation)  { dat in
+            Chart(histData, id: \.id)  { dat in
                
-                ForEach(dat.history){ cont in
+                ForEach(dat.history as! [ContemplationHistory]){ cont in
                     LineMark(
                         x: .value("Start Time", cont.startTime) ,
                         y: .value("Total Duration", cont.endTime.timeIntervalSince(cont.startTime) / 60)
                     )
-                }.foregroundStyle(by: .value("Contemplation Technique", dat.contemplation))
-                    .symbol(by: .value("Contemplation Technique", dat.contemplation))
+                }.foregroundStyle(by: .value("Contemplation Technique", dat.id))
+                    .symbol(by: .value("Contemplation Technique", dat.id))
                 
             }.accessibilityIdentifier("contemplationChart")
         }

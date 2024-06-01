@@ -13,23 +13,29 @@ struct medicationSheet : View {
     @Environment(\.modelContext) private var modelContext
     @State var dosage : Int = 1
     @State var title : String = ""
-    @State var adminstration : Adminstration = .pill
+    @State var adminstration : Administration = .pill
     @State var time : Date = Date()
     @State private var isOneTime : Bool = false
+    @State private var hasErrors : Bool = false
+    @FocusState var isFocused: Bool
     var notificationManager:  NotificationManager
     
     init(notificationManager:  NotificationManager){
         self.notificationManager = notificationManager
     }
     
-    var notCompleted : Bool {
-        return self.title.isEmpty || self.dosage <= 0
+    private func IsFormInComplete()-> Bool {
+        if self.title.isEmpty || self.dosage <= 0 {
+            hasErrors.toggle()
+            return true
+        }
+        return false
     }
     
     
     private func addItem(newItem : Medication) {
         withAnimation {
-            if notCompleted {
+            if IsFormInComplete() {
                 print("Title and dosage are required")
                 return
             }
@@ -52,11 +58,11 @@ struct medicationSheet : View {
                     TextField("Medication Name", text: $title)
                 } footer: {
                     Text("Medication Name Is Required")
-                        .foregroundStyle(.red)
+                        .foregroundStyle(hasErrors ? .red : .gray)
                 }
                 
                 Picker("Choose Administration", selection: $adminstration){
-                    ForEach(Adminstration.allCases, id: \.self) {admin in
+                    ForEach(Administration.allCases, id: \.self) {admin in
                         Text(admin.rawValue)
                         
                     }
@@ -69,13 +75,13 @@ struct medicationSheet : View {
                     Text("Dosage")
                 } footer: {
                     Text("Dosage can not be zero")
-                        .foregroundStyle(.red)
+                        .foregroundStyle(hasErrors ? .red : .gray)
                 }
                 
                 DatePicker("Time", selection: $time, displayedComponents: .hourAndMinute)
                 Section{
                     Toggle("One Time", isOn: $isOneTime)
-                        .accessibilityIdentifier("onetime")
+                        .accessibilityIdentifier("isOneTime")
                 } footer: {
                     Text("Choosing one time will prevent adding item to your list and a notification won't be made")
                 }
@@ -85,6 +91,7 @@ struct medicationSheet : View {
                 ToolbarItemGroup(placement: .topBarLeading) {
                     Button(isOneTime ? "Done":"Cancel", role: .cancel) {dismiss()}
                         .buttonStyle(.bordered)
+                        .accessibilityIdentifier("doneOrCancel")
                 }
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     let medication = Medication(timestamp: time, administration: adminstration, title: title, category: .medication, dose: dosage)
@@ -98,7 +105,6 @@ struct medicationSheet : View {
                             addItem(newItem: medication)
                         }
                         .buttonStyle(.borderedProminent)
-                        .disabled(notCompleted)
                     }
                     
                 }

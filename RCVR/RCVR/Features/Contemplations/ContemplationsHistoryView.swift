@@ -22,7 +22,7 @@ struct ContemplationsHistoryView: View {
             Text("Mental Contemplations")
             let totalTime = history.reduce(0){$0 + ($1.endTime.timeIntervalSince($1.startTime))}
             let lastContemplation : ContemplationHistory?  = history.last
-            let histData : [ChartData] = ChartHelper.getChartData(history: self.history)
+            let histData : [ChartData] = ChartDataFactory.create(history: self.history)
             
             Text("\(totalTime / 60 , format: .number) total minutes in contemplation as of \(lastContemplation?.endTime ?? Date(), format: Date.FormatStyle(date: .abbreviated))").font(.footnote)
             

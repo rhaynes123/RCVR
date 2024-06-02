@@ -31,11 +31,16 @@ struct LogContemplationView : View {
     var body: some View {
         VStack {
             Form {
-                Text("Name: \(contemplation.technique.rawValue)")
-                Text("Scheduled Contemplation Time at \(contemplation.timestamp, format: Date.FormatStyle( time: .shortened))")
-                
-                DatePicker("Start Time", selection: $startTime)
-                DatePicker("End Time", selection: $endTime)
+                Section {
+                    Text("Name: \(contemplation.technique.rawValue)")
+                    Text("Scheduled Contemplation Time at \(contemplation.timestamp, format: Date.FormatStyle( time: .shortened))")
+                    
+                    DatePicker("Start Time", selection: $startTime)
+                    DatePicker("End Time", selection: $endTime)
+                } footer: {
+                    Text("End can not be before start")
+                        .foregroundStyle(.gray)
+                }
                 Button("Log"){
                     let entry = ContemplationHistory(technique: contemplation.technique, startTime: startTime, endTime: endTime)
                     log(entry: entry)

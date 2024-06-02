@@ -6,8 +6,8 @@
 //
 
 import Foundation
-struct ChartHelper {
-    static func getChartData<T: Chartable>(history: [T]) -> [ChartData] {
+struct ChartDataFactory {
+    static func create<T: Chartable>(history: [T]) -> [ChartData] {
         var data : [String : ChartData] = [:]
         
         for medicalData in history {

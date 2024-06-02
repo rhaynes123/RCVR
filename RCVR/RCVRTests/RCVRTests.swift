@@ -27,7 +27,7 @@ final class RCVRTests: XCTestCase {
             WorkoutHistory(exercise: .chinUps, startTime: Date(), endTime: Date(), sets: 4, reps: 5)
         ]
         // Act
-        let actual = ChartHelper.getChartData(history: testHistoryData)
+        let actual = ChartDataFactory.create(history: testHistoryData)
         // Assert
         XCTAssertEqual(actual.count, expected)
     }
@@ -41,7 +41,7 @@ final class RCVRTests: XCTestCase {
             ContemplationHistory(technique: .prayer, startTime: Date(), endTime: Date())
         ]
         // Act
-        let actual = ChartHelper.getChartData(history: testHistoryData)
+        let actual = ChartDataFactory.create(history: testHistoryData)
         // Assert
         XCTAssertEqual(actual.count, expected)
     }
@@ -55,7 +55,7 @@ final class RCVRTests: XCTestCase {
             MedicationHistory(administration: .injection, startTime: Date(), dose: 1, title: "Steriods")
         ]
         // Act
-        let actual = ChartHelper.getChartData(history: testHistoryData)
+        let actual = ChartDataFactory.create(history: testHistoryData)
         // Assert
         XCTAssertEqual(actual.count, expected)
     }

@@ -24,7 +24,7 @@ struct MedicationHistoryView: View {
             Text("Medication History")
             let totalDoses =  history.reduce(0){$0 + ($1.dose)}
             let lastMedication : MedicationHistory?  = history.last
-            let medicalData : [ChartData] = ChartHelper.getChartData(history: self.history)
+            let medicalData : [ChartData] = ChartDataFactory.create(history: self.history)
             Text("\(totalDoses, format: .number) total treatments as of \(lastMedication?.dosageTime ?? Date(), format: Date.FormatStyle(date: .abbreviated))")
                 .font(.footnote)
             

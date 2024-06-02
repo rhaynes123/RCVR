@@ -6,6 +6,7 @@
 //
 import SwiftUI
 struct MainView: View {
+    @State private var viewCategory : Category = .exercise
     private var notificationManager: NotificationManager = NotificationManager()
     var body: some View {
         NavigationSplitView {
@@ -24,20 +25,25 @@ struct MainView: View {
                     Label("\(Category.contemplation.rawValue) Trends", systemImage: "figure.mind.and.body")
                 }
                 
-                ForEach(Category.allCases, id: \.rawValue) { cat in
-                    Section {
-                        switch cat {
-                        case .exercise:
-                            WorkoutView()
-                        case .medication:
-                            MedicationsView()
-                        case .contemplation:
-                            ContemplationView()
-                        }
-                    } header: {
-                        Text(cat.rawValue)
+                Picker("Category", selection: $viewCategory){
+                    ForEach(Category.allCases, id: \.self){
+                        Text($0.rawValue)
                     }
+                }.pickerStyle(.segmented)
+                
+                Section {
+                    switch self.viewCategory {
+                    case .exercise:
+                        WorkoutView()
+                    case .medication:
+                        MedicationsView()
+                    case .contemplation:
+                        ContemplationView()
+                    }
+                } header: {
+                    Text(viewCategory.rawValue)
                 }
+                
             }
         } detail: {
             Text("Select an activity")

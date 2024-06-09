@@ -11,6 +11,7 @@ import SwiftData
 struct medicationSheet : View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) private var modelContext
+    @Environment(NotificationManager.self) private var notificationManager: NotificationManager
     @State var dosage : Int = 1
     @State var title : String = ""
     @State var adminstration : Administration = .pill
@@ -18,11 +19,7 @@ struct medicationSheet : View {
     @State private var isOneTime : Bool = false
     @State private var hasErrors : Bool = false
     @FocusState var isFocused: Bool
-    var notificationManager:  NotificationManager
     
-    init(notificationManager:  NotificationManager){
-        self.notificationManager = notificationManager
-    }
     
     private func IsFormInComplete()-> Bool {
         if self.title.isEmpty || self.dosage <= 0 {
@@ -58,7 +55,7 @@ struct medicationSheet : View {
                     TextField("Medication Name", text: $title)
                 } footer: {
                     Text("Medication Name Is Required")
-                        .foregroundStyle(hasErrors ? .red : .gray)
+                        .foregroundStyle(hasErrors ? .red : .secondary)
                 }
                 
                 Picker("Choose Administration", selection: $adminstration){
@@ -75,7 +72,7 @@ struct medicationSheet : View {
                     Text("Dosage")
                 } footer: {
                     Text("Dosage can not be zero")
-                        .foregroundStyle(hasErrors ? .red : .gray)
+                        .foregroundStyle(hasErrors ? .red : .secondary)
                 }
                 
                 DatePicker("Time", selection: $time, displayedComponents: .hourAndMinute)
@@ -115,6 +112,9 @@ struct medicationSheet : View {
 
 #Preview {
     let container = try! ModelContainer(for: Medication.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
-    return medicationSheet(notificationManager: NotificationManager()).modelContainer(container)
+    let notificationManager =  NotificationManager()
+    return medicationSheet()
+        .environment(notificationManager)
+        .modelContainer(container)
 }
 

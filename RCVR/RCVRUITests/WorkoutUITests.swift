@@ -18,7 +18,7 @@ final class WorkoutUITests: XCTestCase {
         app.buttons["My Activity And Trends"].tap()
         collectionViewsQuery = app.collectionViews
         app.swipeUp()
-        collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["Exercise"]/*[[".cells",".segmentedControls.buttons[\"Exercise\"]",".buttons[\"Exercise\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+        collectionViewsQuery.buttons["Exercise"].tap()
         navigationstackhostingNavigationBar = app.navigationBars["_TtGC7SwiftUI32NavigationStackHosting"]
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
@@ -108,16 +108,16 @@ final class WorkoutUITests: XCTestCase {
         // Act
         oneTime.tap()
         
-        navigationstackhostingNavigationBar/*@START_MENU_TOKEN@*/.buttons["Log"]/*[[".otherElements[\"Log\"].buttons[\"Log\"]",".buttons[\"Log\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        let setsView = collectionViewsQuery/*@START_MENU_TOKEN@*/.cells.textFields["Sets:"]/*[[".cells.textFields[\"Sets:\"]",".textFields[\"Sets:\"]"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/
+        navigationstackhostingNavigationBar.buttons["Log"].tap()
+        let setsView = collectionViewsQuery.cells.textFields["Sets:"]
         setsView.tap()
         setsView.typeText("-1")
         
-        let repsTextField = collectionViewsQuery/*@START_MENU_TOKEN@*/.textFields["Reps:"]/*[[".cells.textFields[\"Reps:\"]",".textFields[\"Reps:\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        let repsTextField = collectionViewsQuery.textFields["Reps:"]
         repsTextField.tap()
         repsTextField.typeText("-3")
         // Assert
-        collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["Log"]/*[[".cells.buttons[\"Log\"]",".buttons[\"Log\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        collectionViewsQuery.buttons["Log"].tap()
         XCTAssertFalse(collectionViewsQuery.buttons["Done"].exists)
     }
     
@@ -134,6 +134,42 @@ final class WorkoutUITests: XCTestCase {
         navigationstackhostingNavigationBar.buttons["Log"].tap()
         collectionViewsQuery.buttons["Log"].tap()
         app.buttons["doneOrCancel"].tap()
+    }
+    
+    func testDurationExercisesDoNotHaveRepsAndSets() throws {
+        // Arrange
+        collectionViewsQuery.staticTexts["Add New Exercise"].tap()
+        let techniquePicker = app.staticTexts["Push Ups"].firstMatch
+        techniquePicker.tap()
+        // Act
+        app.buttons["Running"].firstMatch.tap()
+        let oneTime = app.switches["isOneTime"].switches.firstMatch
+        oneTime.tap()
+        // Assert
+        navigationstackhostingNavigationBar.buttons["Log"].tap()
+        let setsView = collectionViewsQuery.cells.textFields["Sets:"]
+        
+        let repsTextField = collectionViewsQuery.textFields["Reps:"]
+        XCTAssertFalse(setsView.exists, "Sets Exists")
+        XCTAssertFalse(repsTextField.exists, "Reps Exists")
+    }
+    
+    func testRepetionExercisesHaveRepsAndSets() throws {
+        // Arrange
+        collectionViewsQuery.staticTexts["Add New Exercise"].tap()
+        let techniquePicker = app.staticTexts["Push Ups"].firstMatch
+        techniquePicker.tap()
+        // Act
+        app.buttons["Squats"].firstMatch.tap()
+        let oneTime = app.switches["isOneTime"].switches.firstMatch
+        oneTime.tap()
+        // Assert
+        navigationstackhostingNavigationBar.buttons["Log"].tap()
+        let setsView = collectionViewsQuery.cells.textFields["Sets:"]
+        
+        let repsTextField = collectionViewsQuery.textFields["Reps:"]
+        XCTAssertTrue(setsView.exists, "Sets Do Not Exists")
+        XCTAssertTrue(repsTextField.exists, "Reps Do Not Exists")
     }
 
     

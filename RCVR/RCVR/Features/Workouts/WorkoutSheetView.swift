@@ -13,11 +13,8 @@ struct workoutSheet: View {
     @State var exercise : Exercise = .pushUp
     @State var time : Date = Date()
     @State var isOneTime : Bool = false
-    var notificationManager:  NotificationManager
+    @Environment(NotificationManager.self) private var notificationManager: NotificationManager
     
-    init(notificationManager:  NotificationManager){
-        self.notificationManager = notificationManager
-    }
     private func addItem(newItem: Workout) {
         withAnimation {
             modelContext.insert(newItem)
@@ -34,7 +31,7 @@ struct workoutSheet: View {
             Form {
                 Picker("Exercise", selection: $exercise){
                     ForEach(Exercise.allCases, id: \.self) {technique in
-                        Text(technique.rawValue)
+                        Text(technique.rawValue).foregroundStyle(.primary)
                         
                     }
                     
@@ -77,5 +74,8 @@ struct workoutSheet: View {
 
 #Preview {
     let container = try! ModelContainer(for: Workout.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
-    return workoutSheet(notificationManager: NotificationManager()).modelContainer(container)
+    let notificationManager: NotificationManager = NotificationManager()
+    return workoutSheet()
+        .environment(notificationManager)
+        .modelContainer(container)
 }

@@ -11,8 +11,7 @@ struct WorkoutView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var exercises: [Workout]
     @State private var showSheet: Bool = false
-    private var notificationManager:  NotificationManager = NotificationManager()
-    
+    @Environment(NotificationManager.self) private var notificationManager: NotificationManager
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             for index in offsets {
@@ -38,7 +37,7 @@ struct WorkoutView: View {
             Label("Add New \(Category.exercise.rawValue)", systemImage: "figure.run")
         }
         .sheet(isPresented: $showSheet){
-            workoutSheet(notificationManager: self.notificationManager)
+            workoutSheet()
         }
         .frame(width: 300, height: 50, alignment: .center)
             .background(Color.green)
@@ -50,8 +49,11 @@ struct WorkoutView: View {
 
 #Preview {
     let container = try! ModelContainer(for: Workout.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
+    let notificationManager: NotificationManager = NotificationManager()
     container.mainContext.insert(Workout(timestamp: Date(), exercise: .chinUps, category: .exercise))
     container.mainContext.insert(Workout(timestamp: Date(), exercise: .crunches, category: .exercise))
-    return WorkoutView().modelContainer(container)
+    return WorkoutView()
+        .environment(notificationManager)
+        .modelContainer(container)
 }
 

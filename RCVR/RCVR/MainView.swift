@@ -7,13 +7,16 @@
 import SwiftUI
 struct MainView: View {
     @State private var viewCategory : Category = .exercise
-    private var notificationManager: NotificationManager = NotificationManager()
+    @Environment(NotificationManager.self) private var notificationManager: NotificationManager
     var body: some View {
         NavigationSplitView {
-            Image("logo").resizable().frame(width: 50, height: 50)
+            Image("logo")
+                .resizable()
+                .frame(width: 50, height: 50)
             Form {
                 
-                Text("My Activities and Trends").font(.title)
+                Text("My Activities and Trends")
+                    .font(.title)
                 
                 NavigationLink(destination: WorkoutHistoryView()){
                     Label("\(Category.exercise.rawValue) Trends", systemImage: "figure.run")
@@ -62,7 +65,8 @@ struct MainView: View {
 }
 
 #Preview {
-    MainView()
+    let notificationManager: NotificationManager = NotificationManager()
+    return MainView().environment(notificationManager)
 }
 
     

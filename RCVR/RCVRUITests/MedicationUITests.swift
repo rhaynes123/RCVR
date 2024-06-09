@@ -17,7 +17,7 @@ final class MedicationUITests: XCTestCase {
         
         app.buttons["My Activity And Trends"].tap()
         collectionViewsQuery = app.collectionViews
-        collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["Medication"]/*[[".cells",".segmentedControls.buttons[\"Medication\"]",".buttons[\"Medication\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+        collectionViewsQuery.buttons["Medication"].tap()
         navigationstackhostingNavigationBar = app.navigationBars["_TtGC7SwiftUI32NavigationStackHosting"]
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
@@ -45,13 +45,13 @@ final class MedicationUITests: XCTestCase {
        
         // Act
         app.swipeUp()
-        collectionViewsQuery/*@START_MENU_TOKEN@*/.staticTexts["Add New Medication"]/*[[".cells",".buttons[\"Add New Medication\"].staticTexts[\"Add New Medication\"]",".staticTexts[\"Add New Medication\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+        collectionViewsQuery.staticTexts["Add New Medication"].tap()
         let medicationName = collectionViewsQuery.textFields["Medication Name"]
         medicationName.tap()
         medicationName.typeText(name)
         
         
-        navigationstackhostingNavigationBar/*@START_MENU_TOKEN@*/.buttons["Save"]/*[[".otherElements[\"Save\"].buttons[\"Save\"]",".buttons[\"Save\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        navigationstackhostingNavigationBar.buttons["Save"].tap()
         let asprinButton = collectionViewsQuery.buttons.containing(asprinPredicate).firstMatch
         asprinButton.swipeLeft()
         let deleteButton = collectionViewsQuery.buttons["Delete"]
@@ -66,21 +66,21 @@ final class MedicationUITests: XCTestCase {
     func testMedicationOneTime() throws {
         // Arrange
         app.swipeUp()
-        app.collectionViews/*@START_MENU_TOKEN@*/.staticTexts["Add New Medication"]/*[[".cells",".buttons[\"Add New Medication\"].staticTexts[\"Add New Medication\"]",".staticTexts[\"Add New Medication\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.collectionViews.staticTexts["Add New Medication"].tap()
         
         let oneTime = app.switches["isOneTime"].switches.firstMatch
         XCTAssertTrue(oneTime.waitForExistence(timeout: 5), "The 'onetime' switch does not exist.")
         XCTAssertTrue(oneTime.isHittable)
         // Act
         oneTime.tap()
-        let name = collectionViewsQuery/*@START_MENU_TOKEN@*/.textFields["Medication Name"]/*[[".cells.textFields[\"Medication Name\"]",".textFields[\"Medication Name\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        let name = collectionViewsQuery.textFields["Medication Name"]
         name.tap()
         name.typeText("Vitamin D")
        
         // Assert
-        navigationstackhostingNavigationBar/*@START_MENU_TOKEN@*/.buttons["Log"]/*[[".otherElements[\"Log\"].buttons[\"Log\"]",".buttons[\"Log\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app/*@START_MENU_TOKEN@*/.buttons["Log"]/*[[".cells.buttons[\"Log\"]",".buttons[\"Log\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        navigationstackhostingNavigationBar/*@START_MENU_TOKEN@*/.buttons["doneOrCancel"]/*[[".otherElements[\"Done\"]",".buttons[\"Done\"]",".buttons[\"doneOrCancel\"]",".otherElements[\"doneOrCancel\"]"],[[[-1,2],[-1,1],[-1,3,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+        navigationstackhostingNavigationBar.buttons["Log"].tap()
+        app.buttons["Log"].tap()
+        navigationstackhostingNavigationBar.buttons["doneOrCancel"].tap()
     }
     
     func testMedicationCanNotHaveZeroDose() throws {
@@ -107,7 +107,7 @@ final class MedicationUITests: XCTestCase {
     func testMedicationMustHaveAName() throws {
         // Arrange
         // Act
-        collectionViewsQuery/*@START_MENU_TOKEN@*/.staticTexts["Add New Medication"]/*[[".cells",".buttons[\"Add New Medication\"].staticTexts[\"Add New Medication\"]",".staticTexts[\"Add New Medication\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+        collectionViewsQuery.staticTexts["Add New Medication"].tap()
         let medicationElement : XCUIElement = collectionViewsQuery.textFields["Medication Name"]
         medicationElement.tap()
         medicationElement.typeText(String(XCUIKeyboardKey.delete.rawValue))

@@ -50,7 +50,7 @@ struct LogWorkoutView : View {
                         Text("Sets")
                     } footer: {
                         Text("Sets can not be zero")
-                            .foregroundStyle( hasErrors ? .red : .gray)
+                            .foregroundStyle( hasErrors ? .red : .secondary)
                     }
                     
                     Section {
@@ -60,7 +60,7 @@ struct LogWorkoutView : View {
                         Text("Reps")
                     } footer: {
                         Text("Reps can not be zero")
-                            .foregroundStyle( hasErrors ? .red : .gray)
+                            .foregroundStyle( hasErrors ? .red : .secondary)
                     }
                 }
                 
@@ -70,7 +70,7 @@ struct LogWorkoutView : View {
                     DatePicker("End Time", selection: $endTime)
                 } footer: {
                     Text("End can not be before start")
-                        .foregroundStyle( hasErrors ? .red : .gray)
+                        .foregroundStyle( hasErrors ? .red : .secondary)
                 }
                 
                 Button("Log"){

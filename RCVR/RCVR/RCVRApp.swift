@@ -10,6 +10,8 @@ import SwiftData
 
 @main
 struct RCVRApp: App {
+    
+    @State private var notificationManager:  NotificationManager = NotificationManager()
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Workout.self,
@@ -33,6 +35,7 @@ struct RCVRApp: App {
             HomeView()
         }
         .modelContainer(sharedModelContainer)
+        .environment(self.notificationManager)
     }
     
     init() {

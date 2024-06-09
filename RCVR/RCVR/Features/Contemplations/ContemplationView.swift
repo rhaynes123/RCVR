@@ -9,10 +9,10 @@ import SwiftUI
 import SwiftData
 struct ContemplationView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(NotificationManager.self) private var notificationManager: NotificationManager
     @Query private var contemplations: [Contemplation]
     @State private var showContemplationSheet: Bool = false
     
-    private var notificationManager:  NotificationManager = NotificationManager()
     
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
@@ -41,7 +41,7 @@ struct ContemplationView: View {
             Label("Add New \(Category.contemplation.rawValue)", systemImage: "figure.mind.and.body")
         }
         .sheet(isPresented: $showContemplationSheet) {
-            contemplationSheet(notificationManager: self.notificationManager)
+            contemplationSheet()
         }
         .frame(width: 300, height: 50, alignment: .center)
             .background(Color.blue)
@@ -52,7 +52,9 @@ struct ContemplationView: View {
 
 
 #Preview {
-    ContemplationView()
+    let notificationManager = NotificationManager()
+    return ContemplationView()
+        .environment(notificationManager)
         .modelContainer(for: Contemplation.self, inMemory: true)
 }
 

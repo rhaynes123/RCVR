@@ -10,14 +10,11 @@ import SwiftData
 struct contemplationSheet: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) private var modelContext
+    @Environment(NotificationManager.self) private var notificationManager: NotificationManager
     @State var technique : Technique = .meditation
     @State var time : Date = Date()
     @State private var isOneTime : Bool = false
-    var notificationManager:  NotificationManager
     
-    init(notificationManager:  NotificationManager){
-        self.notificationManager = notificationManager
-    }
     private func addItem(newItem : Contemplation) {
         withAnimation {
             modelContext.insert(newItem)
@@ -77,5 +74,8 @@ struct contemplationSheet: View {
 
 #Preview {
     let container = try! ModelContainer(for: Contemplation.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
-    return contemplationSheet(notificationManager: NotificationManager()).modelContainer(container)
+    let notificationManager = NotificationManager()
+    return contemplationSheet()
+        .environment(notificationManager)
+        .modelContainer(container)
 }

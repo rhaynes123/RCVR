@@ -10,16 +10,15 @@ import SwiftUI
 import SwiftData
 struct MedicationsView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(NotificationManager.self) private var notificationManager: NotificationManager
     @Query private var medications: [Medication]
     @State private var showSheet: Bool = false
     
-    private var notificationManager:  NotificationManager = NotificationManager()
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             for index in offsets {
                 let med : Medication = medications[index]
                 if let notificationId = med.notificationId {
-                    
                     notificationManager.removeNotification(id: notificationId.uuidString)
                 }
                 modelContext.delete(med)
@@ -43,7 +42,7 @@ struct MedicationsView: View {
             Label("Add New \(Category.medication.rawValue)", systemImage: "pills.circle")
         }
         .sheet(isPresented: $showSheet) {
-            medicationSheet(notificationManager: self.notificationManager)
+            medicationSheet()
         }
         .frame(width: 300, height: 50, alignment: .center)
             .background(Color.yellow)
@@ -55,5 +54,8 @@ struct MedicationsView: View {
 #Preview {
     let container = try! ModelContainer(for: Medication.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
     container.mainContext.insert(Medication(timestamp: Date(), administration: .pill, title: "Asprin", category: .medication, dose: 2))
-    return MedicationsView().modelContainer(container)
+    let notificationManager: NotificationManager = NotificationManager()
+    return MedicationsView()
+        .environment(notificationManager)
+        .modelContainer(container)
 }

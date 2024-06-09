@@ -7,7 +7,7 @@
 
 import Foundation
 import UserNotifications
-final class NotificationManager {
+final class NotificationManager: Observable {
     
     func requestNotificationAuthorization(){
         // Badge is the red numerical icon that displays over apps needing attention

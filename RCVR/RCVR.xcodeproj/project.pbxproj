@@ -124,6 +124,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5531A26B2C1103C700AAC53E /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				55A910B02C025A10005F1267 /* ChartDataFactory.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		55A35DE52BF8F8A300565334 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,7 +181,6 @@
 				55CCFF342BC2F9890093A6B3 /* MainView.swift */,
 				55BF53D72BCA0A1400FD2C88 /* HomeView.swift */,
 				5584AD7C2BDD5E560050DC37 /* PrivacyInfo.xcprivacy */,
-				55A910B02C025A10005F1267 /* ChartDataFactory.swift */,
 			);
 			path = RCVR;
 			sourceTree = "<group>";
@@ -208,6 +215,7 @@
 		55BCF4AA2BC20B6A00DE071C /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				5531A26B2C1103C700AAC53E /* Shared */,
 				55C162BA2C03F5680014B1BF /* Protocols */,
 				55ACC1B92BE9ACD900A34D7B /* Notifications */,
 				55BCF4AD2BC20B9500DE071C /* Medications */,
@@ -590,7 +598,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.9;
+				CURRENT_PROJECT_VERSION = 1.1.0;
 				DEVELOPMENT_ASSET_PATHS = "\"RCVR/Preview Content\"";
 				DEVELOPMENT_TEAM = P7FYQ2HW53;
 				ENABLE_PREVIEWS = YES;
@@ -607,7 +615,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.9;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Richard.RCVR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -625,7 +633,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.9;
+				CURRENT_PROJECT_VERSION = 1.1.0;
 				DEVELOPMENT_ASSET_PATHS = "\"RCVR/Preview Content\"";
 				DEVELOPMENT_TEAM = P7FYQ2HW53;
 				ENABLE_PREVIEWS = YES;
@@ -642,7 +650,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.9;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Richard.RCVR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

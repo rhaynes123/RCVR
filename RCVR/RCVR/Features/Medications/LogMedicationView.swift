@@ -11,7 +11,7 @@ struct LogMedicationView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     @State private var actualTime : Date = Date()
-    
+    @State private var presentAlert : Bool = false
     var medication : Medication
     
     init(medication: Medication) {
@@ -31,7 +31,14 @@ struct LogMedicationView: View {
                 Button("Log"){
                     let entry = MedicationHistory(administration: medication.administration, startTime: actualTime, dose: medication.dose, title: medication.title)
                     log(entry: entry)
-                    dismiss()
+                    presentAlert.toggle()
+                }.alert("WooHoo!", isPresented: $presentAlert){
+                    Button("Completed", role: .cancel){
+                        modelContext.insert( Point(category: Category.medication, timestamp: Date()))
+                        dismiss()
+                    }
+                } message: {
+                    Text("You have recovered +\(self.medication.category.points) points!")
                 }
             }
         }
@@ -39,6 +46,11 @@ struct LogMedicationView: View {
 }
 
 #Preview {
+    let schema = Schema([
+        MedicationHistory.self,
+        Point.self
+    ])
+    let container = try! ModelContainer(for: schema, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
     let medication = Medication(timestamp: Date(), administration: .injection, title: "Asprin", category: .medication, dose: 2)
-    return LogMedicationView(medication: medication)
+    return LogMedicationView(medication: medication).modelContainer(container)
 }

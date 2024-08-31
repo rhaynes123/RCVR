@@ -80,6 +80,7 @@ final class MedicationUITests: XCTestCase {
         // Assert
         navigationstackhostingNavigationBar.buttons["Log"].tap()
         app.buttons["Log"].tap()
+        app.alerts["WooHoo!"].scrollViews.otherElements.buttons["Completed"].tap()
         navigationstackhostingNavigationBar.buttons["doneOrCancel"].tap()
     }
     

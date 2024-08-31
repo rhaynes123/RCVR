@@ -19,7 +19,8 @@ struct RCVRApp: App {
             Medication.self,
             MedicationHistory.self,
             Contemplation.self,
-            ContemplationHistory.self
+            ContemplationHistory.self,
+            Point.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

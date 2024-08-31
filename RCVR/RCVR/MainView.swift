@@ -5,7 +5,11 @@
 //  Created by richard Haynes on 4/7/24.
 //
 import SwiftUI
+import SwiftData
 struct MainView: View {
+    @Environment(\.modelContext) private var modelContext
+    @Query(sort:[SortDescriptor(\Point.timestamp, order: .reverse)]
+            , animation: .snappy) private var points: [Point]
     @State private var viewCategory : Category = .exercise
     @Environment(NotificationManager.self) private var notificationManager: NotificationManager
     var body: some View {
@@ -14,7 +18,11 @@ struct MainView: View {
                 .resizable()
                 .frame(width: 50, height: 50)
             Form {
-                
+                HStack {
+                    let totalPoints : Int = points.reduce(0){$0 + $1.amount}
+                    Image(systemName: "cross.circle").foregroundColor(.red)
+                    Text(" Total Recovered Points: \(totalPoints)")
+                }
                 Text("My Activities and Trends")
                     .font(.title)
                 

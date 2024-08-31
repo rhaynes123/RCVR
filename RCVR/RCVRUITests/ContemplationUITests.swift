@@ -65,7 +65,8 @@ final class ContemplationUITests: XCTestCase {
         // Assert
         navigationstackhostingNavigationBar/*@START_MENU_TOKEN@*/.buttons["Log"]/*[[".otherElements[\"Log\"].buttons[\"Log\"]",".buttons[\"Log\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["Log"]/*[[".cells.buttons[\"Log\"]",".buttons[\"Log\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        navigationstackhostingNavigationBar/*@START_MENU_TOKEN@*/.buttons["doneOrCancel"]/*[[".otherElements[\"Done\"]",".buttons[\"Done\"]",".buttons[\"doneOrCancel\"]",".otherElements[\"doneOrCancel\"]"],[[[-1,2],[-1,1],[-1,3,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.alerts["WooHoo!"].scrollViews.otherElements.buttons["Completed"].tap()
+        navigationstackhostingNavigationBar.buttons["doneOrCancel"].tap()
     }
     
     func testContemplationTrendsShow() throws {
@@ -89,6 +90,7 @@ final class ContemplationUITests: XCTestCase {
         // Assert
         navigationstackhostingNavigationBar/*@START_MENU_TOKEN@*/.buttons["Log"]/*[[".otherElements[\"Log\"].buttons[\"Log\"]",".buttons[\"Log\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["Log"]/*[[".cells.buttons[\"Log\"]",".buttons[\"Log\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.alerts["WooHoo!"].scrollViews.otherElements.buttons["Completed"].tap()
         navigationstackhostingNavigationBar/*@START_MENU_TOKEN@*/.buttons["doneOrCancel"]/*[[".otherElements[\"Done\"]",".buttons[\"Done\"]",".buttons[\"doneOrCancel\"]",".otherElements[\"doneOrCancel\"]"],[[[-1,2],[-1,1],[-1,3,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
     }
 

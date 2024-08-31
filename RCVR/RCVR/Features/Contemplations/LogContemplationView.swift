@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 
 struct LogContemplationView : View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
-    
+    @State private var presentAlert: Bool = false
     @State private var startTime : Date = Date()
     @State private var endTime : Date = Date()
     var canLog : Bool {
@@ -26,7 +27,7 @@ struct LogContemplationView : View {
             return
         }
         modelContext.insert(entry)
-        dismiss()
+        
     }
     var body: some View {
         VStack {
@@ -44,7 +45,17 @@ struct LogContemplationView : View {
                 Button("Log"){
                     let entry = ContemplationHistory(technique: contemplation.technique, startTime: startTime, endTime: endTime)
                     log(entry: entry)
-                    
+                    if !canLog {
+                        presentAlert.toggle()
+                    }
+                }
+                .alert("WooHoo!", isPresented: $presentAlert){
+                    Button("Completed", role: .cancel){
+                        modelContext.insert( Point(category: Category.contemplation, timestamp: Date()))
+                        dismiss()
+                    }
+                } message: {
+                    Text("You have recovered +\(Category.contemplation.points) points!")
                 }.disabled(canLog)
             }
         }
@@ -53,7 +64,12 @@ struct LogContemplationView : View {
 }
 
 #Preview {
+    let schema = Schema([
+        ContemplationHistory.self,
+        Point.self
+    ])
+    let container = try! ModelContainer(for: schema, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
     let contemplation = Contemplation(timestamp: Date(), category: .contemplation, technique: .meditation)
-    return LogContemplationView(contemplation: contemplation)
+    return LogContemplationView(contemplation: contemplation).modelContainer(container)
 }
 

@@ -15,6 +15,7 @@ struct LogWorkoutView : View {
     @State private var sets: Int = 0
     @State private var reps: Int = 0
     @State private var hasErrors : Bool = false
+    @State private var presentAlert : Bool = false
     var workout : Workout
     init(workout: Workout) {
         self.workout = workout
@@ -35,7 +36,7 @@ struct LogWorkoutView : View {
         }
        
         modelContext.insert(entry)
-        dismiss()
+       
     }
     var body: some View {
         VStack {
@@ -76,7 +77,17 @@ struct LogWorkoutView : View {
                 Button("Log"){
                     let entry = WorkoutHistory(exercise: workout.exercise, startTime: startTime, endTime: endTime, sets: sets, reps: reps)
                     log(entry: entry)
-                    
+                    if !hasErrors {
+                        presentAlert.toggle()
+                    }
+                }
+                .alert("WooHoo!", isPresented: $presentAlert){
+                    Button("Completed", role: .cancel){
+                        modelContext.insert( Point(category: Category.exercise, timestamp: Date()))
+                        dismiss()
+                    }
+                } message: {
+                    Text("You have recovered +\(Category.exercise.points) points!")
                 }
             }
         }

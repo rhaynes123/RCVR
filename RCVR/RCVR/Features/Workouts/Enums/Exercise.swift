@@ -19,6 +19,7 @@ enum Exercise: String, Codable, CaseIterable {
     case pullups = "Pull Ups"
     case wallPushUp = "Wall Push Ups"
     case chinUps = "Chin Ups"
+    case benchPress = "Bench Press"
     
     var measurement : Measurement {
         switch self {

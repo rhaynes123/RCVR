@@ -94,6 +94,7 @@ final class WorkoutUITests: XCTestCase {
         // Assert
         app.swipeDown()
         collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["Log"]/*[[".cells.buttons[\"Log\"]",".buttons[\"Log\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.alerts["WooHoo!"].scrollViews.otherElements.buttons["Completed"].tap()
         app.buttons["doneOrCancel"].tap()
     }
     
@@ -133,6 +134,7 @@ final class WorkoutUITests: XCTestCase {
         // Assert
         navigationstackhostingNavigationBar.buttons["Log"].tap()
         collectionViewsQuery.buttons["Log"].tap()
+        app.alerts["WooHoo!"].scrollViews.otherElements.buttons["Completed"].tap()
         app.buttons["doneOrCancel"].tap()
     }
     

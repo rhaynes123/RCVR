@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		558A929B2C836F1D009D2DC1 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558A929A2C836F1D009D2DC1 /* Point.swift */; };
 		55A35DE72BF8F8BC00565334 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A35DE62BF8F8BC00565334 /* Exercise.swift */; };
 		55A35DE92BF92E7600565334 /* WorkoutSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A35DE82BF92E7600565334 /* WorkoutSheetView.swift */; };
 		55A35DEB2BF92F1000565334 /* ContemplationSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A35DEA2BF92F1000565334 /* ContemplationSheetView.swift */; };
@@ -61,6 +62,7 @@
 
 /* Begin PBXFileReference section */
 		5584AD7C2BDD5E560050DC37 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		558A929A2C836F1D009D2DC1 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		55A35DE62BF8F8BC00565334 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		55A35DE82BF92E7600565334 /* WorkoutSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSheetView.swift; sourceTree = "<group>"; };
 		55A35DEA2BF92F1000565334 /* ContemplationSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContemplationSheetView.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				55A910B02C025A10005F1267 /* ChartDataFactory.swift */,
+				558A929A2C836F1D009D2DC1 /* Point.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				55BF53D82BCA0A1400FD2C88 /* HomeView.swift in Sources */,
 				55C162BC2C03F57E0014B1BF /* Chartable.swift in Sources */,
 				55CCFF352BC2F9890093A6B3 /* MainView.swift in Sources */,
+				558A929B2C836F1D009D2DC1 /* Point.swift in Sources */,
 				55BCF47D2BC1A07D00DE071C /* RCVRApp.swift in Sources */,
 				55C162C42C0BFEA50014B1BF /* View+Extensions.swift in Sources */,
 				55A35DE72BF8F8BC00565334 /* Exercise.swift in Sources */,
@@ -598,7 +602,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.1;
+				CURRENT_PROJECT_VERSION = 1.1.2;
 				DEVELOPMENT_ASSET_PATHS = "\"RCVR/Preview Content\"";
 				DEVELOPMENT_TEAM = P7FYQ2HW53;
 				ENABLE_PREVIEWS = YES;
@@ -615,7 +619,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Richard.RCVR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -633,7 +637,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.1;
+				CURRENT_PROJECT_VERSION = 1.1.2;
 				DEVELOPMENT_ASSET_PATHS = "\"RCVR/Preview Content\"";
 				DEVELOPMENT_TEAM = P7FYQ2HW53;
 				ENABLE_PREVIEWS = YES;
@@ -650,7 +654,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Richard.RCVR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

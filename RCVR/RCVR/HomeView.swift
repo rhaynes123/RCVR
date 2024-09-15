@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var showDisclaimer : Bool = false
+    private var acknowledgedDisclaimer = UserDefaults.standard.bool(forKey: "acknowledgedDisclaimer")
+    
+    private let disclaimer : String = """
+                IMPORTANT:Before beginning any exercise or fitness program, it is recommended that you.Consult with your primary care physician or a qualified healthcare professional.By engaging in any exercise or fitness program, you agree that you do so at your own risk, are voluntarily participating in these activities, and assume all risk of injury to yourself. The developers, and distributors of this product will not be held liable for any injury or damage sustained while following this program. Stay safe, stay healthy, and enjoy your recovery!
+    """
     
     private let quote : String = """
     "It is during our darkest moments that we must focus to see the light." - Aristotle
@@ -33,6 +39,23 @@ struct HomeView: View {
                     .foregroundColor(Color.white)
                     .cornerRadius(10)
             
+        }
+        .onAppear {
+            if !self.acknowledgedDisclaimer {
+                showDisclaimer.toggle()
+            }
+        }
+        .alert("Disclaimer", isPresented: $showDisclaimer){
+            Button("Confirm") {
+                UserDefaults.standard.setValue(true, forKey: "acknowledgedDisclaimer")
+                showDisclaimer.toggle()
+            }
+            Button("Cancel", role: .cancel){
+                showDisclaimer.toggle()
+            }
+            
+        } message: {
+            Text(disclaimer)
         }
         
         

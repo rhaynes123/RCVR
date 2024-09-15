@@ -12,6 +12,7 @@ struct MainView: View {
             , animation: .snappy) private var points: [Point]
     @State private var viewCategory : Category = .exercise
     @Environment(NotificationManager.self) private var notificationManager: NotificationManager
+    private var acknowledgedDisclaimer = UserDefaults.standard.bool(forKey: "acknowledgedDisclaimer")
     var body: some View {
         NavigationSplitView {
             Image("logo")
@@ -45,7 +46,12 @@ struct MainView: View {
                 Section {
                     switch self.viewCategory {
                     case .exercise:
-                        WorkoutView()
+                        if acknowledgedDisclaimer {
+                            WorkoutView()
+                        }
+                        else {
+                            Text("Workouts can not be done. Disclaimer has not been acknowledged.")
+                        }
                     case .medication:
                         MedicationsView()
                     case .contemplation:
@@ -58,10 +64,11 @@ struct MainView: View {
             }
         } detail: {
             Text("Select an activity")
-        }.toolbar(.hidden)
+        }
+        
+        .toolbar(.hidden)
             .onAppear{
                 notificationManager.requestNotificationAuthorization()
-                
             }
             .task {
                 await notificationManager.resetBadge()

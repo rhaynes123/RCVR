@@ -18,6 +18,11 @@ final class ContemplationUITests: XCTestCase {
         app = XCUIApplication()
         // In UI tests it is usually best to stop immediately when a failure occurs.
         app.launch()
+        let confirmation = app.buttons["Confirm"]
+        let confirmationsexists = confirmation.waitForExistence(timeout: 5)
+        if confirmationsexists {
+            confirmation.tap()
+        }
         app.buttons["My Activity And Trends"].tap()
         collectionViewsQuery = app.collectionViews
         collectionViewsQuery.buttons["Contemplation"].tap()

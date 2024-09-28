@@ -14,7 +14,7 @@ struct MainView: View {
     @Environment(NotificationManager.self) private var notificationManager: NotificationManager
     private var acknowledgedDisclaimer = UserDefaults.standard.bool(forKey: "acknowledgedDisclaimer")
     var body: some View {
-        NavigationSplitView {
+        NavigationStack {
             Image("logo")
                 .resizable()
                 .frame(width: 50, height: 50)
@@ -24,6 +24,7 @@ struct MainView: View {
                     Image(systemName: "cross.circle").foregroundColor(.red)
                     Text(" Total Recovered Points: \(totalPoints)")
                 }
+                
                 Text("My Activities and Trends")
                     .font(.title)
                 
@@ -60,11 +61,8 @@ struct MainView: View {
                 } header: {
                     Text(viewCategory.rawValue)
                 }
-                
             }
-        } detail: {
-            Text("Select an activity")
-        }
+        } 
         
         .toolbar(.hidden)
             .onAppear{
